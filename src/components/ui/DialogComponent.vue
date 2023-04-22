@@ -3,7 +3,7 @@
     <!-- ----------Delete dialog------------ -->
     <v-dialog
       v-if="typeDialog === 'delete'"
-      v-model="showDialog"
+      :value="showDialogValue"
       max-width="400"
     >
       <v-card class="pa-8">
@@ -31,7 +31,7 @@
     <!-- ----------Success dialog------------ -->
     <v-dialog
       v-if="typeDialog === 'success'"
-      v-model="showDialog"
+      :value="showDialogValue"
       max-width="400"
     >
       <v-card class="pa-8 d-flex flex-column" style="border-radius: 12px">
@@ -53,7 +53,7 @@
     <!-- ----------Review random dialog------------ -->
     <v-dialog
       v-if="typeDialog === 'remind'"
-      v-model="showDialog"
+      :value="showDialogValue"
       max-width="600"
     >
       <v-card class="pa-8">
@@ -99,16 +99,12 @@ export default {
   props: {
     showDialogValue: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     typeDialog: {
       type: String,
       default: "remind",
     },
-  },
-  mounted() {
-    this.showDialog = this.showDialogValue;
-    // console.log(this.showDialogValue);
   },
   methods: {
     handleCloseDialog() {
@@ -132,9 +128,11 @@ export default {
 .dialog-delete-title
   font-size: 22px
   color: #1C283D
+
 .dialog-delete-subtitle
   font-size: 16px
   color: #384961
+
 .cancel-btn
   background-color: transparent !important
   text-transform: initial
@@ -143,12 +141,14 @@ export default {
 // ------- dialog success ------- //
 .v-card
   border-radius: 12px !important
+
 .dialog-success-title
   font-size: 22px
   color: #384961
   word-break: normal
   line-height: 33px
   width: 100%
+
 .v-responsive__content
   justify-content: center
   display: flex
