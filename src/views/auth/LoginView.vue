@@ -1,6 +1,5 @@
 <template>
   <v-container fluid class="login-wrapper" pa-0>
-    <NavBarComponent />
     <v-row
       :class="[
         'login-row w-100',
@@ -37,6 +36,7 @@
         :style="$vuetify.breakpoint.mdAndUp ? 'max-width: 400px' : ''"
       >
         <v-card elevation="0" class="login-group-form-card">
+          <!--  --------------------Header-------------------- -->
           <v-card-title
             class="mb-2"
             :class="$vuetify.breakpoint.xsOnly ? 'd-flex justify-center' : ' '"
@@ -44,17 +44,27 @@
             <h3>Welcome to <span class="castory">Castory</span></h3>
           </v-card-title>
           <v-card-subtitle
-            class="mb-8 ml-1"
-            :class="$vuetify.breakpoint.xsOnly ? 'd-flex justify-center' : ' '"
+            class="ml-1 pb-0 d-flex flex-column"
+            :class="{
+              'd-flex justify-center': $vuetify.breakpoint.xsOnly,
+              'mb-15': isValidForm,
+            }"
           >
-            <div>Log in to start learning</div>
+            <div :class="$vuetify.breakpoint.xsOnly && 'text-center'">
+              Log in to start learning
+            </div>
+            <div v-if="!isValidForm" class="mt-3 login-invalid-helper-text">
+              Your user name or password is wrong
+            </div>
           </v-card-subtitle>
+          <!--  --------------------Start form-------------------- -->
           <v-card-text>
             <form @submit.prevent="handleSubmitForm">
               <v-row
                 :class="[
                   'login-group-form',
                   {
+                    'invalid-form': !isValidForm,
                     'login-group-sm': $vuetify.breakpoint.xsOnly,
                   },
                 ]"
@@ -65,7 +75,15 @@
                   v-model.trim="username"
                 />
               </v-row>
-              <v-row class="login-group-form">
+              <v-row
+                :class="[
+                  'login-group-form',
+                  {
+                    'invalid-form': !isValidForm,
+                    'login-group-sm': $vuetify.breakpoint.xsOnly,
+                  },
+                ]"
+              >
                 <label class="login-label" for="password">Password</label>
                 <InputComponent
                   :inputProps="passwordInput"
@@ -84,11 +102,10 @@
 </template>
 
 <script>
-import NavBarComponent from "@/components/ui/NavBarComponent.vue";
 import InputComponent from "@/components/ui/InputComponent.vue";
 
 export default {
-  components: { InputComponent, NavBarComponent },
+  components: { InputComponent },
   data() {
     return {
       usernameInput: {
@@ -103,10 +120,12 @@ export default {
       },
       username: "",
       password: "",
+      isValidForm: true,
     };
   },
   methods: {
     handleSubmitForm() {
+      this.isValidForm = !this.isValidForm;
       console.log(this.username, this.password);
     },
   },
@@ -185,4 +204,13 @@ form
 .login-row
   .login-col-sm
     padding: 0
+
+// ------------- Invalid Form ---------------- //
+.invalid-form
+  input
+    border-color: #FD443A !important
+.login-invalid-helper-text
+  color: #FD443A
+  margin-bottom: 24px
+  padding-bottom: 2px
 </style>
