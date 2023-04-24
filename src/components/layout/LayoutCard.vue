@@ -58,7 +58,7 @@
                 <v-row class="ma-0">
                   <v-col cols="12" class="d-flex justify-space-between pa-0">
                     <p class="layout-type">{{ type }}</p>
-                    <!-- ----------Menu item---------- -->
+                    <!-- --------------------Menu item------------------- -->
                     <v-menu
                       offset-y
                       transition="slide-y-transition"
@@ -80,7 +80,7 @@
                           v-for="(item, index) in items"
                           :key="index"
                           link
-                          @click="handleDelete"
+                          @click="handleEmit(item.emitFunction)"
                         >
                           <v-img :src="getIcon(item.icon)" alt="" />
                           <v-list-item-title
@@ -121,7 +121,7 @@ export default {
         color: "color: #FD443A",
         icon: "trash",
         title: "Xóa thẻ",
-        emitFunction: "handleDelete",
+        emitFunction: "delete",
       },
       {
         color: "color: #3887FE",
@@ -144,9 +144,8 @@ export default {
     handleBackPage() {
       this.$emit("back");
     },
-
-    handleDelete() {
-      this.$emit("delete");
+    handleEmit(action) {
+      return this.$emit(action);
     },
   },
 };
