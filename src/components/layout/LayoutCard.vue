@@ -38,7 +38,7 @@
           >
             <h4>{{ title }}</h4>
             <span
-              class="layout-card-time-left"
+              class="layout-card-time-left123"
               :class="{
                 'ml-2': $vuetify.breakpoint.smAndUp,
               }"
@@ -115,19 +115,19 @@ export default {
         color: "color: #1BB763",
         icon: "save",
         title: "Lưu thẻ",
-        emitFunction: "handleSave",
+        emitFunction: "saveCard",
       },
       {
         color: "color: #FD443A",
         icon: "trash",
         title: "Xóa thẻ",
-        emitFunction: "delete",
+        emitFunction: "openDeleteDialog",
       },
       {
         color: "color: #3887FE",
         icon: "back",
         title: "Quay lại",
-        emitFunction: "handleBack",
+        emitFunction: "backCard",
       },
     ],
   }),
@@ -175,8 +175,8 @@ export default {
 
 .v-menu__content
   border-radius: 12px
-//left: 62vw !important
-//top: 25vh !important
+  //left: 62vw !important
+  //top: 25vh !important
 
 .v-list-item__title
   font-style: normal

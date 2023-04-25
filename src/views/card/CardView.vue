@@ -5,11 +5,17 @@
       subtitle="Bộ thẻ:"
       type="CÂU HỎI"
       timeLeft="Còn 1 giờ 16 phút"
-      @delete="handleDeleteCard"
+      @openDeleteDialog="handleOpenDeleteDialog"
       @back="handleBackPage"
+      @backCard="handleBackCard"
     >
       <v-layout class="d-flex flex-column">
-        <v-flex class="mb-2 justify-center d-flex">
+        <v-flex
+          class="mb-2 justify-center d-flex"
+          :class="{
+            'mb-4': $vuetify.breakpoint.xsOnly,
+          }"
+        >
           <h4>
             Phân biệt <span class="font-weight-bold text-2">elder</span> và
             <span class="font-weight-bold text-2">elderly</span>
@@ -20,9 +26,14 @@
           <InputComponent :inputProps="answerInput" v-model="answerValue" />
         </v-flex>
         <v-flex class="d-flex align-center justify-space-between">
-          <div class="d-flex">
+          <div
+            class="d-flex"
+            :class="{
+              'flex-column': $vuetify.breakpoint.xsOnly,
+            }"
+          >
             <div>Số thẻ mới:<span class="ml-2 text-1">140</span></div>
-            <div class="ml-8">
+            <div :class="{ 'ml-8': $vuetify.breakpoint.smAndUp }">
               Số thẻ cần ôn:<span class="ml-2 text-2">42</span>
             </div>
           </div>
@@ -37,6 +48,7 @@
         :showDialogValue="showDialog"
         typeDialog="delete"
         @closeDialog="handleCloseDialog"
+        @confirmRequest="handleConfirmRequest"
       />
     </LayoutCard>
   </v-container>
@@ -47,6 +59,7 @@ import LayoutCard from "@/components/layout/LayoutCard.vue";
 import InputComponent from "@/components/ui/InputComponent.vue";
 import ButtonComponent from "@/components/ui/ButtonComponent.vue";
 import DialogComponent from "@/components/ui/DialogComponent.vue";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   components: {
@@ -56,10 +69,19 @@ export default {
     LayoutCard,
   },
   created() {
-    this.cardId = this.$route.params.id;
+    if (localStorage.getItem("cardId") === null) {
+      this.cardId = this.$store.getters["card/getCardId"];
+    } else {
+      this.cardId = localStorage.getItem("cardId");
+    }
+    this.handleGetElementIndex(this.cardId);
+  },
+  mounted() {
+    this.handleSetId(this.$route.params.id);
   },
   data() {
     return {
+      componentKey: 0,
       answerInput: {
         placeholder: "Nhập câu trả lời của bạn",
         id: "answer",
@@ -70,25 +92,42 @@ export default {
     };
   },
   computed: {
+    ...mapGetters("card", [
+      "getPreviousElementId",
+      "getNextElementId",
+      "getCardId",
+    ]),
     getTitle() {
-      return `Tuần ${this.cardId} thi đại học`;
+      return `Tuần ${this.getCardId} thi đại học`;
     },
   },
   methods: {
+    ...mapActions("list", ["handleRemoveProduct"]),
+    ...mapActions("card", ["handleGetElementIndex", "handleSetId"]),
+    // ---------------------- Handle open and close dialogs -------------------- //
     handleShowDialog() {
       this.showDialog = true;
     },
     handleCloseDialog() {
       this.showDialog = false;
     },
-    handleDeleteCard() {
+    handleOpenDeleteDialog() {
       this.handleShowDialog();
     },
     handleBackPage() {
-      this.$router.push("/list");
+      this.$router.push(`/list`);
     },
     handleAnswer() {
       console.log(this.answerValue);
+    },
+    //   ----------Delete card + back card from list cards action-------- //
+    handleConfirmRequest() {
+      this.handleCloseDialog();
+      this.handleRemoveProduct(this.cardId);
+      this.$router.push(`/list/${this.getNextElementId}`);
+    },
+    handleBackCard() {
+      this.$router.push(`/list/${this.getPreviousElementId}`);
     },
   },
 };
