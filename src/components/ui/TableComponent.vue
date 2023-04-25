@@ -22,7 +22,7 @@
           <td class="table-name">{{ item.name }}</td>
           <td class="text-center table-new-card">{{ item.newCard }}</td>
           <td class="text-center table-remind-card">{{ item.remindCard }}</td>
-          <td class="text-center">
+          <td>
             <v-menu offset-y transition="slide-y-transition" location="end">
               <!-- -------------------Menu list-------------------- -->
               <template v-slot:activator="{ attrs, on }">
