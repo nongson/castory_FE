@@ -5,4 +5,8 @@ export default {
   handleClearToken(context) {
     context.commit("handleClearToken");
   },
+  handleKeepLogin(context) {
+    const token = localStorage.getItem("token");
+    context.commit("handleKeepLogin", token);
+  },
 };

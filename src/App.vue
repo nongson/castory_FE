@@ -24,6 +24,9 @@ export default {
   computed: {
     ...mapGetters("auth", ["getIsLoggedIn"]),
   },
+  created() {
+    this.$store.dispatch("auth/handleKeepLogin");
+  },
 };
 </script>
 

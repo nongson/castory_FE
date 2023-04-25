@@ -7,4 +7,7 @@ export default {
     state.token = null;
     localStorage.removeItem("token");
   },
+  handleKeepLogin(state, payload) {
+    state.token = payload;
+  },
 };
