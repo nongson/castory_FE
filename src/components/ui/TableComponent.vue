@@ -3,10 +3,14 @@
     <template v-slot:default>
       <thead class="table-wrapper-header">
         <tr>
-          <th class="text-left table-header-border-left">Bộ thẻ</th>
-          <th class="text-center">Thẻ mới</th>
-          <th class="text-center">Thẻ ôn tập</th>
-          <th class="text-left table-header-border-right"></th>
+          <th class="text-left table-header-border-left table-header-border">
+            Bộ thẻ
+          </th>
+          <th class="text-center table-header-border">Thẻ mới</th>
+          <th class="text-center table-header-border">Thẻ ôn tập</th>
+          <th
+            class="text-left table-header-border-right table-header-border"
+          ></th>
         </tr>
       </thead>
       <tbody class="table-wrapper-content">
@@ -18,7 +22,7 @@
           <td class="table-name">{{ item.name }}</td>
           <td class="text-center table-new-card">{{ item.newCard }}</td>
           <td class="text-center table-remind-card">{{ item.remindCard }}</td>
-          <td>
+          <td class="text-center">
             <v-menu offset-y transition="slide-y-transition" location="end">
               <!-- -------------------Menu list-------------------- -->
               <template v-slot:activator="{ attrs, on }">
@@ -107,7 +111,11 @@ table
 
 .table-header-border-left
   border-top-left-radius: 12px
-
+.table-header-border
+  border-left: 1px solid
+  &:first-child
+    border-right: 1px solid
+    border-left: none
 .table-header-border-right
   border-top-right-radius: 13px
 
