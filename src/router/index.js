@@ -3,7 +3,7 @@ import VueRouter from "vue-router";
 import LoginView from "@/views/auth/LoginView.vue";
 import CardView from "@/views/card/CardView.vue";
 import ListView from "@/views/list/ListView.vue";
-import store from "@/store";
+// import store from "@/store";
 
 Vue.use(VueRouter);
 
@@ -16,6 +16,7 @@ const routes = [
     path: "/login",
     name: "login",
     component: LoginView,
+    meta: { needLogin: false },
   },
   {
     path: "/list",
@@ -38,9 +39,12 @@ const router = new VueRouter({
   routes,
 });
 
+// ---------------- guard router using token in localStorage ---------------- /
 router.beforeEach((to, from, next) => {
-  if (to.meta.needLogin && !store.getters["auth/getIsLoggedIn"]) {
+  if (to.meta.needLogin && !!localStorage.getItem("token") === false) {
     next("/login");
+  } else if (!to.meta.needLogin && !!localStorage.getItem("token")) {
+    next("/list");
   } else {
     next();
   }
