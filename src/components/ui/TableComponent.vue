@@ -114,7 +114,6 @@ table
 .table-header-border
   border-left: 1px solid
   &:first-child
-    border-right: 1px solid
     border-left: none
 .table-header-border-right
   border-top-right-radius: 13px
