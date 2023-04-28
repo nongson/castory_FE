@@ -34,5 +34,5 @@ export default {
 // ---------- convert 1 rem = 10px ---------- //
 html
   box-sizing: border-box
-  font-family: Averta
+  font-family: Averta-regular
 </style>

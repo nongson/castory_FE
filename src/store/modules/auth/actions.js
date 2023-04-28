@@ -13,7 +13,6 @@ export default {
     );
 
     const data = await response.json();
-    console.log("api was called");
     if (response.status !== 200) {
       const error = new Error(
         data.message || "Your user name or password is wrong!"
