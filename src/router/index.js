@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import LoginView from "@/views/auth/LoginView.vue";
 import CardView from "@/views/card/CardView.vue";
 import ListView from "@/views/list/ListView.vue";
+import BrowseView from "@/views/list/BrowseView.vue";
 // import store from "@/store";
 
 Vue.use(VueRouter);
@@ -29,6 +30,12 @@ const routes = [
     name: "cardDetails",
     props: true,
     component: CardView,
+    meta: { needLogin: true },
+  },
+  {
+    path: "/browse",
+    name: "browse",
+    component: BrowseView,
     meta: { needLogin: true },
   },
 ];
