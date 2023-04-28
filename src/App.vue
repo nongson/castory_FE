@@ -1,8 +1,7 @@
 <template>
-  <!--  123-->
   <v-app>
     <v-main>
-      <NavBarComponent v-if="getIsLoggedIn" />
+      <NavBarComponent v-if="getIsLoggedIn || this.$route.path === '/login'" />
       <router-view v-slot="{ Component, route }">
         <component :is="Component" :key="route.patch" />
       </router-view>
