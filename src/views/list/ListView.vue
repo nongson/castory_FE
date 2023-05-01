@@ -3,10 +3,11 @@
     <TableComponent
       :values="listCards"
       :headers="tableHeaders"
+      :haveOptions="true"
+      cols="3"
       @navigate="handleNavigateToCard"
       @study="handleStudy"
       @randomStudy="handleRandomStudy"
-      :haveOptions="true"
     />
     <DialogComponent
       typeDialog="remind"

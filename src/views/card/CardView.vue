@@ -22,10 +22,12 @@
           </h4>
         </v-flex>
         <v-flex>
-          <label for="answer" class="card-answer">Câu trả lời:</label>
+          <div class="mb-2">
+            <label for="answer" class="card-answer">Câu trả lời:</label>
+          </div>
           <InputComponent :inputProps="answerInput" v-model="answerValue" />
         </v-flex>
-        <v-flex class="d-flex align-center justify-space-between">
+        <v-flex class="d-flex align-center justify-space-between mt-4">
           <div
             class="d-flex"
             :class="{
