@@ -69,7 +69,7 @@
                   },
                 ]"
               >
-                <label class="login-label" for="username">User name</label>
+                <label class="login-label mb-2" for="username">User name</label>
                 <InputComponent
                   :inputProps="usernameInput"
                   v-model.trim="username.value"
@@ -84,7 +84,7 @@
                   },
                 ]"
               >
-                <label class="login-label" for="password">Password</label>
+                <label class="login-label mb-2" for="password">Password</label>
                 <InputComponent
                   :inputProps="passwordInput"
                   v-model.trim="password.value"
@@ -217,6 +217,7 @@ form
   display: flex
   flex-direction: column
   .login-group-form
+    margin-bottom: 24px
     display: flex
     flex-direction: column
     padding-left: 16px
