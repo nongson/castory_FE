@@ -1,6 +1,13 @@
 <template>
   <v-app>
     <v-main>
+      <v-overlay v-if="overlay" class="align-center justify-center">
+        <v-progress-circular
+          color="primary"
+          indeterminate
+          size="64"
+        ></v-progress-circular>
+      </v-overlay>
       <NavBarComponent v-if="getIsLoggedIn || this.$route.path === '/login'" />
       <router-view v-slot="{ Component, route }">
         <component :is="Component" :key="route.patch" />
@@ -18,7 +25,7 @@ export default {
   components: { NavBarComponent },
 
   data: () => ({
-    //
+    overlay: false,
   }),
   computed: {
     ...mapGetters("auth", ["getIsLoggedIn"]),
