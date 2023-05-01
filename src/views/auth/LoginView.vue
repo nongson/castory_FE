@@ -187,7 +187,7 @@ export default {
   background-color: #F3F4FD !important
 
 .login-wrapper
-  height: 100vh
+  padding-top: 1px !important
   .login-row
     height: 95vh
     width: 95vw
