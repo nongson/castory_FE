@@ -30,7 +30,7 @@
         :class="[
           {
             'login-wrapper-form': $vuetify.breakpoint.mdAndUp,
-            'login-col-sm': $vuetify.breakpoint.xsOnly,
+            'login-col-sm': $vuetify.breakpoint.smAndDown,
           },
         ]"
         :style="$vuetify.breakpoint.mdAndUp ? 'max-width: 400px' : ''"
@@ -188,6 +188,7 @@ export default {
 
 .login-wrapper
   padding-top: 1px !important
+  height: 100vh
   .login-row
     height: 95vh
     width: 95vw
@@ -240,12 +241,15 @@ form
 .login-wrapper
   .height-sm
     height: unset
+    width: 100vw
+    margin: 0
     .login-flex-image
       display: flex
       justify-content: end
   .login-row-xs
     padding: 0 16px
-    margin-top: 87px
+    margin: 87px 0 0 0
+    width: 100%
 
 form
   .login-group-sm
@@ -254,8 +258,15 @@ form
 
 .login-row
   .login-col-sm
-    padding: 0
-
+    padding: 0 16px
+    margin: 87px 0 0 0
+    width: 100%
+    .login-group-form-card
+      height: 100vh
+      .v-card__title
+        justify-content: center!important
+      .v-card__subtitle
+        text-align: center
 // ------------- Invalid Form ---------------- //
 .invalid-form
   input
