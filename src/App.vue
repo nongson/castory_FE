@@ -19,6 +19,7 @@
 <script>
 import NavBarComponent from "@/components/ui/NavBarComponent.vue";
 import { mapGetters } from "vuex";
+import "@/assets/styles/style.sass";
 
 export default {
   name: "App",
@@ -40,5 +41,6 @@ export default {
 // ---------- convert 1 rem = 10px ---------- //
 html
   box-sizing: border-box
-  font-family: Averta-regular
+.v-application
+  font-family: AvertaRegular, Arial, Helvetica, sans-serif
 </style>

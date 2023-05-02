@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import LoginView from "@/views/auth/LoginView.vue";
+import AdminLoginView from "@/views/auth/AdminLoginView.vue";
 import CardView from "@/views/card/CardView.vue";
 import ListView from "@/views/list/ListView.vue";
 import BrowseView from "@/views/list/BrowseView.vue";
@@ -17,6 +18,12 @@ const routes = [
     path: "/login",
     name: "login",
     component: LoginView,
+    meta: { needLogin: false },
+  },
+  {
+    path: "/admin",
+    name: "loginAdmin",
+    component: AdminLoginView,
     meta: { needLogin: false },
   },
   {
