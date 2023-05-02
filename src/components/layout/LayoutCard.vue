@@ -99,8 +99,8 @@
                   </v-col>
                 </v-row>
                 <slot></slot>
-                <!--                <v-divider class="mb-6"></v-divider>-->
-                <!--                <FooterCardView />-->
+                <v-divider v-if="haveFooter" class="mb-6"></v-divider>
+                <FooterCardView v-if="haveFooter" />
               </v-card>
             </v-col>
           </v-row>
@@ -112,9 +112,20 @@
 
 <script>
 import ButtonComponent from "@/components/ui/ButtonComponent.vue";
+import FooterCardView from "@/views/card/FooterCardView.vue";
 
 export default {
-  components: { ButtonComponent },
+  props: {
+    subtitle: String,
+    title: String,
+    type: String,
+    timeLeft: String,
+    haveFooter: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  components: { FooterCardView, ButtonComponent },
   data: () => ({
     items: [
       {
@@ -137,12 +148,6 @@ export default {
       },
     ],
   }),
-  props: {
-    subtitle: String,
-    title: String,
-    type: String,
-    timeLeft: String,
-  },
   methods: {
     getIcon(name) {
       return require("@/assets/icons/" + name + ".svg");
