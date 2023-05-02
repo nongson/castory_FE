@@ -1,12 +1,12 @@
 <template>
   <v-row class="d-flex align-center">
-    <v-col cols="12" md="3" class="d-flex flex-column align-center">
+    <v-col cols="12" md="3" class="d-flex flex-column">
       <ButtonComponent
         title="Học lại"
         prependIcon="fa-rotate-right"
         isGrayBtn
       />
-      <span>1 phút</span>
+      <span class="text-center" style="width: 108px">1 phút</span>
     </v-col>
     <v-col cols="12" md="9">
       <v-row>

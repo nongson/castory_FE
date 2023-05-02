@@ -9,8 +9,8 @@
       @back="handleBackPage"
       @backCard="handleBackCard"
     >
-      <v-layout class="d-flex flex-column">
-        <v-flex
+      <v-layout class="d-flex flex-column" style="min-height: 432px">
+        <div
           class="mb-2 justify-center d-flex"
           :class="{
             'mb-4': $vuetify.breakpoint.xsOnly,
@@ -20,14 +20,14 @@
             Phân biệt <span class="font-weight-bold text-2">elder</span> và
             <span class="font-weight-bold text-2">elderly</span>
           </h4>
-        </v-flex>
-        <v-flex>
+        </div>
+        <div>
           <div class="mb-2">
             <label for="answer" class="card-answer">Câu trả lời:</label>
           </div>
           <InputComponent :inputProps="answerInput" v-model="answerValue" />
-        </v-flex>
-        <v-flex class="d-flex align-center justify-space-between mt-4">
+        </div>
+        <div class="d-flex align-center justify-space-between mt-4">
           <div
             class="d-flex"
             :class="{
@@ -44,7 +44,7 @@
             append-icon="fa-arrow-right"
             @click="handleAnswer"
           />
-        </v-flex>
+        </div>
       </v-layout>
       <DialogComponent
         :showDialogValue="showDialog"
