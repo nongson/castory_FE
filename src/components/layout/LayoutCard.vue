@@ -10,7 +10,7 @@
         cols="12"
         md="8"
         :class="{
-          'py-0 px-1': $vuetify.breakpoint.xsOnly,
+          'pt-4 px-1': $vuetify.breakpoint.xsOnly,
         }"
       >
         <!--  ----------Header---------- -->
@@ -27,7 +27,11 @@
                 <p class="mb-0">{{ subtitle }}</p>
               </v-card-subtitle>
             </v-flex>
-            <ButtonComponent title="Browse" isGrayBtn />
+            <ButtonComponent
+              title="Browse"
+              isGrayBtn
+              @click="handleNavigateBrowse"
+            />
           </v-flex>
 
           <v-card-title
@@ -95,6 +99,8 @@
                   </v-col>
                 </v-row>
                 <slot></slot>
+                <!--                <v-divider class="mb-6"></v-divider>-->
+                <!--                <FooterCardView />-->
               </v-card>
             </v-col>
           </v-row>
@@ -146,6 +152,9 @@ export default {
     },
     handleEmit(action) {
       return this.$emit(action);
+    },
+    handleNavigateBrowse() {
+      this.$router.push("/browse");
     },
   },
 };
