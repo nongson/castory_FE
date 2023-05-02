@@ -1,14 +1,15 @@
 <template>
   <v-btn text :class="typeButton">
     <img :src="getIcon(prependIcon)" class="mr-2" />
-    <v-flex
+    <div
       :class="{
         easyTypeColor: typeButton === 'easyType',
         normalTypeColor: typeButton === 'normalType',
         hardTypeColor: typeButton === 'hardType',
       }"
-      >{{ title }}</v-flex
     >
+      <span>{{ title }}</span>
+    </div>
   </v-btn>
 </template>
 
@@ -39,6 +40,7 @@ export default {
 <style lang="sass" scoped>
 button
   text-transform: initial
+  width: 100%
   .hardTypeColor
     color: #F56742
   .normalTypeColor

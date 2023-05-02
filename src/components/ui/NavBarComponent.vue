@@ -27,7 +27,7 @@
           </v-flex>
           <v-flex class="d-flex justify-end align-center">
             <span style="color: #ffffff; font-size: 14px; font-weight: 600"
-              >Log out</span
+              >Đăng xuất</span
             >
             <img
               src="@/assets/icons/logout.svg"

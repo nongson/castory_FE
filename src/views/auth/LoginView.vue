@@ -51,7 +51,7 @@
             }"
           >
             <div :class="$vuetify.breakpoint.xsOnly && 'text-center'">
-              Log in to start learning
+              Đăng nhập để bắt đầu học
             </div>
             <div v-if="!isValidForm" class="mt-3 login-invalid-helper-text">
               Your user name or password is wrong!
@@ -111,12 +111,12 @@ export default {
     return {
       usernameInput: {
         typeInput: "text",
-        placeholder: "Type in your username",
+        placeholder: "Điền tên đăng nhập",
         id: "username",
       },
       passwordInput: {
         typeInput: "password",
-        placeholder: "Type in your password",
+        placeholder: "Điền mật khẩu",
         id: "password",
       },
       username: {
