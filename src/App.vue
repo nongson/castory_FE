@@ -42,5 +42,5 @@ export default {
 html
   box-sizing: border-box
 .v-application
-  font-family: AvertaRegular, Arial, Helvetica, sans-serif
+  font-family: AvertaRegular
 </style>
