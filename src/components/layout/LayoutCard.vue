@@ -99,8 +99,15 @@
                   </v-col>
                 </v-row>
                 <slot></slot>
-                <v-divider v-if="haveFooter" class="mb-6"></v-divider>
-                <FooterCardView v-if="haveFooter" />
+                <div class="mt-8">
+                  <v-divider v-if="haveFooter" class="mb-6"></v-divider>
+                  <FooterCardView
+                    v-if="haveFooter"
+                    @clickEasyType="handleClickEasyType"
+                    @clickNormalType="handleClickNormalType"
+                    @clickHardType="handleClickHardType"
+                  />
+                </div>
               </v-card>
             </v-col>
           </v-row>
@@ -161,6 +168,16 @@ export default {
     handleNavigateBrowse() {
       this.$router.push("/browse");
     },
+    // emit study again methods
+    handleClickEasyType() {
+      this.$emit("clickEasyType");
+    },
+    handleClickNormalType() {
+      this.$emit("clickEasyType");
+    },
+    handleClickHardType() {
+      this.$emit("clickEasyType");
+    },
   },
 };
 </script>
@@ -170,7 +187,6 @@ export default {
   margin-top: 56px
   border-radius: 16px
   background-color: #F9FBFC
-  min-height: 585px
   padding: 24px
 
 .layout-card-time-left

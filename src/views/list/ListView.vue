@@ -52,8 +52,7 @@ export default {
     handleGoBrowse() {
       this.$router.push("/browse");
     },
-    handleStudy(id) {
-      console.log(id);
+    handleStudy() {
       this.showDialogRemind = true;
     },
     handleRandomStudy() {

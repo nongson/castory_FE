@@ -2,9 +2,10 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import LoginView from "@/views/auth/LoginView.vue";
 import AdminLoginView from "@/views/auth/AdminLoginView.vue";
-import CardView from "@/views/card/CardView.vue";
 import ListView from "@/views/list/ListView.vue";
 import BrowseView from "@/views/list/BrowseView.vue";
+import CardQuestionView from "@/views/card/CardQuestionView.vue";
+import CardAnswerView from "@/views/card/CardAnswerView.vue";
 // import store from "@/store";
 
 Vue.use(VueRouter);
@@ -34,9 +35,16 @@ const routes = [
   },
   {
     path: "/list/:id",
-    name: "cardDetails",
+    name: "cardDetailsQuestion",
     props: true,
-    component: CardView,
+    component: CardQuestionView,
+    meta: { needLogin: true },
+  },
+  {
+    path: "/answer/:id",
+    name: "cardDetailsAnswer",
+    props: true,
+    component: CardAnswerView,
     meta: { needLogin: true },
   },
   {

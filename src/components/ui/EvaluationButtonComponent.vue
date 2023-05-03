@@ -1,5 +1,5 @@
 <template>
-  <v-btn text :class="typeButton">
+  <v-btn text :class="typeButton" @click="handleClickEvaluationBtn">
     <img :src="getIcon(prependIcon)" class="mr-2" />
     <div
       :class="{
@@ -32,6 +32,15 @@ export default {
   methods: {
     getIcon(name) {
       return require("@/assets/icons/" + name + ".svg");
+    },
+    handleClickEvaluationBtn() {
+      if (this.typeButton === "easyType") {
+        this.$parent.$emit("clickEasyType");
+      } else if (this.typeButton === "normalType") {
+        this.$parent.$emit("clickNormalType");
+      } else if (this.typeButton === "hardType") {
+        this.$parent.$emit("clickHardType");
+      }
     },
   },
 };

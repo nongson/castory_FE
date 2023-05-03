@@ -16,11 +16,13 @@
             'mb-4': $vuetify.breakpoint.xsOnly,
           }"
         >
+          <!--  ------------- Question title ----------------- -->
           <h4>
             Phân biệt <span class="font-weight-bold text-2">elder</span> và
             <span class="font-weight-bold text-2">elderly</span>
           </h4>
         </div>
+        <!--  --------------------Input answer------------------- -->
         <div>
           <div class="mb-2">
             <label for="answer" class="card-answer">Câu trả lời:</label>
@@ -121,6 +123,7 @@ export default {
     },
     handleAnswer() {
       console.log(this.answerValue);
+      this.$router.push(`/answer/${this.cardId}`);
     },
     //   ----------Delete card + back card from list cards action-------- //
     handleConfirmRequest() {
