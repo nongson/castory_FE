@@ -23,7 +23,7 @@
               style="cursor: pointer"
             />
             <v-flex class="ml-3">
-              <h2>Browse</h2>
+              <h4>Browse</h4>
             </v-flex>
           </v-flex>
         </v-col>
@@ -63,26 +63,32 @@
             <v-col cols="12" md="6" sm="6" class="pa-1">
               <v-card class="browse-card-detail" elevation="0">
                 <v-card-title class="mb-2">
-                  <h2 class="browse-card-title">Flower</h2>
+                  <h4 class="browse-card-title">Flower</h4>
                   &nbsp;
-                  <span class="browse-card-title-des">(Đại từ phản thân)</span>
+                  <h7 class="browse-card-title-des">(Đại từ phản thân)</h7>
                 </v-card-title>
                 <v-card-subtitle>
                   <div class="d-flex align-center mb-2">
                     <img src="@/assets/icons/audio.svg" />
-                    <span class="ml-1">/ˈflaʊ.ɚ/</span>
+                    <h7 class="ml-1">/ˈflaʊ.ɚ/</h7>
                   </div>
                   <ul>
-                    <li>Hoa</li>
+                    <li>
+                      <h7>Hoa</h7>
+                    </li>
                   </ul>
                 </v-card-subtitle>
                 <v-divider></v-divider>
-                <v-card-text>
-                  <span class="mb-1">Ví dụ:</span>
-                  <h4 class="mb-1">
+                <v-card-text class="d-flex flex-column">
+                  <caption1 class="mb-1" style="color: #aeb7ca">
+                    Ví dụ:
+                  </caption1>
+                  <h7 class="mb-1">
                     She was ill so I sent her some flowers to cheer her up.
-                  </h4>
-                  <p>(Cô ấy bị ốm nên tôi đã gửi hoa để khích lệ cô ấy)</p>
+                  </h7>
+                  <body>
+                    (Cô ấy bị ốm nên tôi đã gửi hoa để khích lệ cô ấy)
+                  </body>
                 </v-card-text>
               </v-card>
             </v-col>

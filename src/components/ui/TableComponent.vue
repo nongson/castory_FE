@@ -7,7 +7,11 @@
     <template v-slot:default>
       <thead class="table-wrapper-header">
         <tr>
-          <th v-for="(item, index) in headers" :key="index">{{ item }}</th>
+          <th v-for="(item, index) in headers" :key="index">
+            <body style="color: #ffffff">
+              {{ item }}
+            </body>
+          </th>
         </tr>
       </thead>
       <tbody class="table-wrapper-content">
@@ -16,15 +20,17 @@
           :key="value.name"
           @click="handleNavigate(value.id)"
         >
-          <td class="table-name">{{ value.name }}</td>
+          <td class="table-name">
+            <h6>{{ value.name }}</h6>
+          </td>
           <td class="text-center table-new-card" v-if="1 < cols && cols <= 3">
-            {{ value.newCard }}
+            <h6>{{ value.newCard }}</h6>
           </td>
           <td
             class="text-center table-remind-card"
             v-if="2 < cols && cols <= 3"
           >
-            {{ value.remindCard }}
+            <h6>{{ value.remindCard }}</h6>
           </td>
           <td v-if="haveOptions">
             <v-menu offset-y transition="slide-y-transition" location="end">
@@ -140,7 +146,9 @@ table
   .table-name
     color: #1C283D !important
   .table-new-card
-    color: #3887FE
+    h6
+      color: #3887FE
   .table-remind-card
-    color: #1BB763
+    h6
+      color: #1BB763
 </style>
