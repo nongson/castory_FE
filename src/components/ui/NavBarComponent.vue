@@ -19,15 +19,16 @@
               alt=""
               style="width: 32px; height: 32px"
             />
-            <span
+            <h6
               class="ml-3"
               style="color: #ffffff; font-size: 16px; font-weight: 600"
-              >Nguyen Van A</span
             >
+              Nguyen Van A
+            </h6>
           </v-flex>
           <v-flex class="d-flex justify-end align-center">
-            <span style="color: #ffffff; font-size: 14px; font-weight: 600"
-              >Đăng xuất</span
+            <caption2 style="color: #ffffff; font-size: 14px; font-weight: 600"
+              >Đăng xuất</caption2
             >
             <img
               src="@/assets/icons/logout.svg"

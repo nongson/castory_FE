@@ -9,13 +9,13 @@
     >
       <v-card class="pa-8">
         <v-card-title class="pa-0 mb-7">
-          <h4
+          <h5
             class="dialog-delete-title"
             v-text="typeDialog === 'logout' ? 'Đăng xuất?' : 'Xoá thẻ?'"
           />
         </v-card-title>
         <v-card-text class="pa-0 mb-7">
-          <span
+          <h7
             class="dialog-delete-subtitle"
             v-text="
               typeDialog === 'logout'
@@ -23,13 +23,13 @@
                 : 'Thẻ sẽ bị xóa vĩnh viễn'
             "
           >
-          </span>
+          </h7>
         </v-card-text>
         <v-card-actions class="d-flex align-center pa-0">
           <v-spacer></v-spacer>
-          <v-btn class="cancel-btn" elevation="0" @click="handleCloseDialog"
-            >Huỷ</v-btn
-          >
+          <v-btn class="cancel-btn" elevation="0" @click="handleCloseDialog">
+            <h7>Huỷ</h7>
+          </v-btn>
           <ButtonComponent
             :title="typeDialog === 'logout' ? 'Đăng xuất' : 'Xoá'"
             class="ml-3"
@@ -100,16 +100,15 @@
           ></h4>
         </v-card-title>
         <v-card-text class="pa-0 mb-6 d-flex flex-column">
-          <span
+          <h6
             class="dialog-delete-subtitle mb-1"
             v-text="
               typeDialog === 'customRemind'
                 ? 'Bạn muốn ôn ngẫu nhiên bao nhiêu thẻ?'
                 : 'Bạn muốn ôn tập trước bao nhiêu ngày?'
             "
-          >
-          </span>
-          <span
+          ></h6>
+          <body
             class="dialog-helper-text"
             v-text="
               typeDialog === 'customRemind'
@@ -118,7 +117,7 @@
             "
           >
             Nhập số thẻ từ 1 - [tổng số thẻ]
-          </span>
+          </body>
         </v-card-text>
         <v-card-actions class="d-flex align-center pa-0">
           <InputComponent :inputProps="inputProps" class="ma-0" />
@@ -178,7 +177,6 @@ export default {
   color: #1C283D
 
 .dialog-delete-subtitle
-  font-size: 16px
   color: #384961
 
 .cancel-btn
