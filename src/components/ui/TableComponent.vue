@@ -8,16 +8,16 @@
       <thead class="table-wrapper-header">
         <tr>
           <th v-for="(item, index) in headers" :key="index">
-            <body style="color: #ffffff">
+            <text-averta-400 style="color: #ffffff">
               {{ item }}
-            </body>
+            </text-averta-400>
           </th>
         </tr>
       </thead>
       <tbody class="table-wrapper-content">
         <tr
-          v-for="value in values"
-          :key="value.name"
+          v-for="(value, index) in values"
+          :key="index"
           @click="handleNavigate(value.id)"
         >
           <td class="table-name">
@@ -144,6 +144,7 @@ table
 .table-wrapper-content
   background-color: #F9FBFC
   .table-name
+    h6
     color: #1C283D !important
   .table-new-card
     h6

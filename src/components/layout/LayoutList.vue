@@ -15,9 +15,7 @@
         <slot></slot>
         <v-flex class="mt-12 d-flex justify-center">
           <h7>Đã học 24 thẻ trong: 3.46 phút</h7> &nbsp;
-          <body>
-            (17.32 giây/thẻ)
-          </body>
+          <text-averta-400> (17.32 giây/thẻ) </text-averta-400>
         </v-flex>
       </v-col>
     </v-row>

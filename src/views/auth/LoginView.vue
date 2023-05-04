@@ -51,9 +51,9 @@
             }"
           >
             <div :class="$vuetify.breakpoint.xsOnly && 'text-center'">
-              <body style="color: #384961 !important">
+              <text-averta-400 style="color: #384961 !important">
                 Đăng nhập để bắt đầu học
-              </body>
+              </text-averta-400>
             </div>
             <div v-if="!isValidForm" class="mt-3 login-invalid-helper-text">
               Your user name or password is wrong!

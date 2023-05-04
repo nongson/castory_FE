@@ -4,7 +4,7 @@
       :values="listCards"
       :headers="tableHeaders"
       :haveOptions="true"
-      cols="3"
+      :cols="3"
       @navigate="handleNavigateToCard"
       @study="handleStudy"
       @randomStudy="handleRandomStudy"

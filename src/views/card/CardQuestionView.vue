@@ -38,12 +38,12 @@
               'flex-column': $vuetify.breakpoint.xsOnly,
             }"
           >
-            <caption1>
+            <captionOne>
               Số thẻ mới:<span class="ml-2 text-1">140</span>
-            </caption1>
-            <caption1 :class="{ 'ml-8': $vuetify.breakpoint.smAndUp }">
+            </captionOne>
+            <captionOne :class="{ 'ml-8': $vuetify.breakpoint.smAndUp }">
               Số thẻ cần ôn:<span class="ml-2 text-2">42</span>
-            </caption1>
+            </captionOne>
           </div>
           <ButtonComponent
             title="Đáp án"
