@@ -24,9 +24,9 @@
                 style="cursor: pointer"
               />
               <v-card-subtitle class="pa-0 d-flex align-center ml-2">
-                <caption1 class="mb-0">
+                <captionOne class="mb-0">
                   {{ subtitle }}
-                </caption1>
+                </captionOne>
               </v-card-subtitle>
             </v-flex>
             <ButtonComponent
@@ -43,13 +43,13 @@
             }"
           >
             <h4>{{ title }}</h4>
-            <body
+            <text-averta-400
               :class="{
                 'ml-2': $vuetify.breakpoint.smAndUp,
               }"
             >
               {{ timeLeft }}
-            </body>
+            </text-averta-400>
           </v-card-title>
           <!-- ----------Start header of content---------- -->
           <v-row class="d-flex justify-center">

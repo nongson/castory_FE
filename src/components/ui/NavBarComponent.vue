@@ -12,7 +12,7 @@
         <v-flex class="nav-login">
           <img src="@/assets/images/miniLogo.png" class="center" alt="" />
         </v-flex>
-        <v-flex class="d-flex" style="max-width: 300px">
+        <v-flex class="d-flex" style="max-width: 300px" v-if="getIsLoggedIn">
           <v-flex class="d-flex justify-end align-center">
             <img
               src="@/assets/icons/account.svg"
@@ -27,9 +27,11 @@
             </h6>
           </v-flex>
           <v-flex class="d-flex justify-end align-center">
-            <caption2 style="color: #ffffff; font-size: 14px; font-weight: 600"
-              >Đăng xuất</caption2
+            <captionTwo
+              style="color: #ffffff; font-size: 14px; font-weight: 600"
             >
+              Đăng xuất
+            </captionTwo>
             <img
               src="@/assets/icons/logout.svg"
               alt=""
@@ -52,7 +54,7 @@
 
 <script>
 import DialogComponent from "@/components/ui/DialogComponent.vue";
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "NavBarComponent",
@@ -75,6 +77,9 @@ export default {
       this.handleClearLocalStorage();
       this.$router.replace("/login");
     },
+  },
+  computed: {
+    ...mapGetters("auth", ["getIsLoggedIn"]),
   },
 };
 </script>

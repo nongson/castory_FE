@@ -32,21 +32,21 @@
         <!--  ----------------------Example content--------------------      -->
         <div class="mt-4 text-center">
           <h7>My elder brother</h7>
-          <body class="text-center">
+          <text-averta-400 class="text-center">
             (Anh trai tôi.)
-          </body>
+          </text-averta-400>
         </div>
         <div class="mt-4 text-center">
           <h7>Children have no respect for their elders nowadays.</h7>
-          <body class="text-center">
+          <text-averta-400 class="text-center">
             (Trẻ em ngày nay không còn tôn trọng người lớn tuổi.)
-          </body>
+          </text-averta-400>
         </div>
         <div class="mt-4 text-center">
           <h7>My elder brother</h7>
-          <body class="text-center">
+          <text-averta-400 class="text-center">
             (Anh trai tôi.)
-          </body>
+          </text-averta-400>
         </div>
       </v-layout>
       <DialogComponent

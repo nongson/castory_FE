@@ -108,7 +108,7 @@
                 : 'Bạn muốn ôn tập trước bao nhiêu ngày?'
             "
           ></h6>
-          <body
+          <text-averta-400
             class="dialog-helper-text"
             v-text="
               typeDialog === 'customRemind'
@@ -117,7 +117,7 @@
             "
           >
             Nhập số thẻ từ 1 - [tổng số thẻ]
-          </body>
+          </text-averta-400>
         </v-card-text>
         <v-card-actions class="d-flex align-center pa-0">
           <InputComponent :inputProps="inputProps" class="ma-0" />

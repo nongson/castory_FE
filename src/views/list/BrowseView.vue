@@ -80,15 +80,15 @@
                 </v-card-subtitle>
                 <v-divider></v-divider>
                 <v-card-text class="d-flex flex-column">
-                  <caption1 class="mb-1" style="color: #aeb7ca">
+                  <captionOne class="mb-1" style="color: #aeb7ca">
                     Ví dụ:
-                  </caption1>
+                  </captionOne>
                   <h7 class="mb-1">
                     She was ill so I sent her some flowers to cheer her up.
                   </h7>
-                  <body>
+                  <text-averta-400>
                     (Cô ấy bị ốm nên tôi đã gửi hoa để khích lệ cô ấy)
-                  </body>
+                  </text-averta-400>
                 </v-card-text>
               </v-card>
             </v-col>
