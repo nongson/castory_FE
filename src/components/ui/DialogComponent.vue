@@ -46,11 +46,8 @@
       @click:outside="handleCloseDialog"
     >
       <v-card
-        class="pa-8 d-flex flex-column"
-        style="
-          border-radius: 12px;
-          background-image: url('https://ohlaladani.com.br/wp-content/uploads/wallpaper-OHLALADANI_DESKTOP_WALLPAPERS_AVENTURA-2.jpg') !important;
-        "
+        class="pa-8 d-flex flex-column bgsize"
+        style="border-radius: 12px"
       >
         <v-flex
           v-if="typeDialog === 'success'"
@@ -198,4 +195,7 @@ export default {
 .v-responsive__content
   justify-content: center
   display: flex
+.bgsize
+  background-image: url(@/assets/images/firework-bg.svg)
+  background-size: cover
 </style>

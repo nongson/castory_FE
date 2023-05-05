@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-row
-      class="mt-8"
+      class="mt-8 d-flex flex-column"
       :class="{
         'px-5': $vuetify.breakpoint.sm,
         'px-4': $vuetify.breakpoint.xsOnly,
