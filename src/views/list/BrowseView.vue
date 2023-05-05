@@ -27,7 +27,7 @@
             </v-flex>
           </v-flex>
         </v-col>
-        <v-col cols="12" xl="9" lg="9" md="9" sm="9" xs="9">
+        <v-col cols="12" xl="9" lg="9" md="9" sm="9" xs="9" class="pr-4">
           <v-flex>
             <InputComponent
               :inputProps="inputProps"
@@ -36,7 +36,7 @@
           </v-flex>
         </v-col>
       </v-row>
-      <v-row :class="{ 'mt-1': $vuetify.breakpoint.xsOnly }">
+      <v-row :class="{ 'mt-1': $vuetify.breakpoint.xsOnly }" class="px-4">
         <v-col cols="12" md="3" sm="12" class="pa-1">
           <TableComponent
             :items="tableGroupCards"
@@ -57,7 +57,7 @@
                 :headers="tableCardDetailHeader"
               />
             </v-col>
-            <v-col cols="12" md="6" sm="6" class="pa-1">
+            <v-col cols="12" md="6" sm="6" class="pa-1 pr-0">
               <v-card class="browse-card-detail" elevation="0">
                 <v-card-title class="mb-2">
                   <h4 class="browse-card-title">Flower</h4>

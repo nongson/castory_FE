@@ -7,6 +7,7 @@
     class="elevation-1"
     disable-pagination
     @click:row="(item) => handleNavigate(item.id)"
+    mobile-breakpoint="0"
   >
     <template v-slot:[`item.actions`]="{ item }">
       <v-menu offset-y transition="slide-y-transition" location="end">
