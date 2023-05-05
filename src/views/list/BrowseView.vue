@@ -8,7 +8,7 @@
       }"
     >
       <v-row>
-        <v-col cols="12" md="3" sm="3" xs="3" class="pa-1">
+        <v-col cols="12" xl="3" lg="3" md="3" sm="3" xs="3" class="pa-1">
           <v-flex
             class="d-flex align-center"
             :class="{
@@ -27,7 +27,7 @@
             </v-flex>
           </v-flex>
         </v-col>
-        <v-col cols="12" md="9" sm="9" xs="9">
+        <v-col cols="12" xl="9" lg="9" md="9" sm="9" xs="9">
           <v-flex>
             <InputComponent
               :inputProps="inputProps"
@@ -39,9 +39,8 @@
       <v-row :class="{ 'mt-1': $vuetify.breakpoint.xsOnly }">
         <v-col cols="12" md="3" sm="12" class="pa-1">
           <TableComponent
-            :values="tableGroupCards"
+            :items="tableGroupCards"
             :headers="tableGroupCardsHeader"
-            :cols="1"
           />
         </v-col>
         <v-col
@@ -54,10 +53,8 @@
           <v-row>
             <v-col cols="12" md="6" sm="6" class="pa-1">
               <TableComponent
-                :values="tableCardsDetail"
+                :items="tableCardsDetail"
                 :headers="tableCardDetailHeader"
-                :haveOptions="true"
-                :cols="3"
               />
             </v-col>
             <v-col cols="12" md="6" sm="6" class="pa-1">
@@ -99,11 +96,11 @@
   </v-container>
 </template>
 <script>
-import TableComponent from "@/components/ui/TableComponent.vue";
 import InputComponent from "@/components/ui/InputComponent.vue";
+import TableComponent from "@/components/ui/TableComponent.vue";
 
 export default {
-  components: { InputComponent, TableComponent },
+  components: { TableComponent, InputComponent },
   data() {
     return {
       inputProps: {
@@ -113,59 +110,83 @@ export default {
       },
       searchValues: "",
 
-      // card title data table
+      // -----------------card title data table------------------
       tableGroupCards: [
-        { name: "Tuần 1 thi đại học (140)" },
-        { name: "Tuần 2 thi đại học (141)" },
-        { name: "Tuần 3 thi đại học (143)" },
-        { name: "Tuần 4 thi đại học (143)" },
-        { name: "Tuần 5 thi đại học (143)" },
-        { name: "Tuần 6 thi đại học (143)" },
-        { name: "Tuần 7 thi đại học (143)" },
-        { name: "Tuần 9 thi đại học (143)" },
-        { name: "Tuần 10 thi đại học (143)" },
-        { name: "Tuần 11 thi đại học (143)" },
-        { name: "Tuần 12 thi đại học (143)" },
-        { name: "Tuần 13 thi đại học (143)" },
-        { name: "Tuần 14 thi đại học (143)" },
-        { name: "Tuần 15 thi đại học (143)" },
+        { id: "1", cardSetName: "Tuần 1 thi đại học (140)" },
+        { id: "2", cardSetName: "Tuần 2 thi đại học (141)" },
+        { id: "3", cardSetName: "Tuần 3 thi đại học (143)" },
+        { id: "4", cardSetName: "Tuần 4 thi đại học (143)" },
+        { id: "5", cardSetName: "Tuần 5 thi đại học (143)" },
+        { id: "6", cardSetName: "Tuần 6 thi đại học (143)" },
+        { id: "7", cardSetName: "Tuần 7 thi đại học (143)" },
+        { id: "8", cardSetName: "Tuần 9 thi đại học (143)" },
+        { id: "9", cardSetName: "Tuần 10 thi đại học (143)" },
+        { id: "10", cardSetName: "Tuần 11 thi đại học (143)" },
+        { id: "11", cardSetName: "Tuần 12 thi đại học (143)" },
+        { id: "12", cardSetName: "Tuần 13 thi đại học (143)" },
+        { id: "13", cardSetName: "Tuần 14 thi đại học (143)" },
+        { id: "14", cardSetName: "Tuần 15 thi đại học (143)" },
       ],
-      tableGroupCardsHeader: ["Tất cả bộ thẻ"],
+      tableGroupCardsHeader: [
+        {
+          text: "Tất cả bộ thẻ",
+          value: "cardSetName",
+          sortable: false,
+        },
+      ],
 
-      //   card details data table
+      //   ----------card details data table----------
       tableCardsDetail: [
         {
-          id: "0",
-          name: "Bộ thẻ đã lưu",
-          newCard: 0,
-          remindCard: 0,
-        },
-        {
           id: "1",
-          name: "Tuần thi 1 đại học",
-          newCard: 140,
-          remindCard: 42,
+          name: "Hoa",
+          dueDate: "25/04/23",
+          cardSetName: "Tuần 1 thi đại học",
         },
         {
           id: "2",
-          name: "Tuần thi 2 đại học",
-          newCard: 140,
-          remindCard: 42,
+          name: "Hoa",
+          dueDate: "25/04/23",
+          cardSetName: "Tuần 1 thi đại học",
         },
         {
           id: "3",
-          name: "Tuần thi 3 đại học",
-          newCard: 140,
-          remindCard: 42,
+          name: "Hoa",
+          dueDate: "25/04/23",
+          cardSetName: "Tuần 1 thi đại học",
         },
         {
           id: "4",
-          name: "Tuần thi 4 đại học",
-          newCard: 140,
-          remindCard: 42,
+          name: "Hoa",
+          dueDate: "25/04/23",
+          cardSetName: "Tuần 1 thi đại học",
         },
       ],
-      tableCardDetailHeader: ["Thẻ", "Đến hạn", "Bộ thẻ", ""],
+      tableCardDetailHeader: [
+        {
+          text: "Thẻ",
+          value: "name",
+          sortable: false,
+        },
+        {
+          text: "Đến hạn",
+          value: "dueDate",
+          sortable: false,
+          align: "center",
+        },
+        {
+          text: "Bộ thẻ",
+          value: "cardSetName",
+          sortable: false,
+          align: "center",
+        },
+        {
+          text: "",
+          value: "actions",
+          sortable: false,
+          align: "center",
+        },
+      ],
     };
   },
   methods: {
@@ -181,7 +202,7 @@ export default {
   background-color: #F9FBFC
   border-radius: 12px
   border: 1px solid #E9EDF5
-  min-height: 672px
+  min-height: 70vh
 .browse-card-title
   color: #1BB763
 .browse-card-title-des
