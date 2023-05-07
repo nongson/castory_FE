@@ -31,7 +31,7 @@
               Nguyen Van A
             </h6>
           </v-flex>
-          <v-flex class="d-flex justify-end align-center">
+          <v-flex class="d-flex justify-end align-center hover-hand">
             <captionTwo
               style="color: #ffffff; font-size: 14px; font-weight: 600"
             >
@@ -42,7 +42,6 @@
               alt=""
               class="ml-3"
               style="width: 13px; height: 16px; cursor: pointer"
-              @click="handleShowDialog"
             />
           </v-flex>
         </v-flex>
@@ -151,5 +150,7 @@ export default {
 .nav-login
   height: 60px
 .logout-mobile
+  cursor: pointer
+.hover-hand
   cursor: pointer
 </style>
