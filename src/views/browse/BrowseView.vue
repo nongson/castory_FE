@@ -114,17 +114,30 @@
         </v-col>
       </v-row>
     </v-row>
+    <DialogComponent
+      typeDialog="remind"
+      :showDialogValue="showDialogRemind"
+      @closeDialog="handleCloseDialog"
+    />
+    <DialogComponent
+      typeDialog="customRemind"
+      :showDialogValue="showDialogCustomRemind"
+      @closeDialog="handleCloseDialog"
+    />
   </v-container>
 </template>
 <script>
 import InputComponent from "@/components/ui/InputComponent.vue";
+import DialogComponent from "@/components/ui/DialogComponent.vue";
 import TableComponent from "@/components/ui/TableComponent.vue";
 import { mapActions } from "vuex";
 
 export default {
-  components: { TableComponent, InputComponent },
+  components: { TableComponent, InputComponent, DialogComponent },
   data() {
     return {
+      showDialogRemind: false,
+      showDialogCustomRemind: false,
       inputProps: {
         typeInput: "text",
         placeholder: "Tìm kiếm thẻ",
@@ -219,6 +232,16 @@ export default {
     handleGoBrowseCard(id) {
       this.handleSetId(id);
       this.$router.push(`/browse/${id}`);
+    },
+    handleCloseDialog() {
+      this.showDialogCustomRemind = false;
+      this.showDialogRemind = false;
+    },
+    handleStudy() {
+      this.showDialogRemind = true;
+    },
+    handleRandomStudy() {
+      this.showDialogCustomRemind = true;
     },
   },
 };
