@@ -3,13 +3,13 @@ import axios from "axios";
 export default {
   async handleLogin(context, payload) {
     let mainURI = "http://103.107.183.127:81/api/login";
-    axios
+    await axios
       .post(mainURI, {
         user_name: payload.username,
         password: payload.password,
       })
       .then((res) => {
-        if (res.data.status_code === 200) {
+        if (res.status === 200) {
           localStorage.setItem("token_type", res.data.token_type);
           localStorage.setItem("access_token", res.data.access_token);
           context.commit("handleLogin", {
@@ -23,9 +23,7 @@ export default {
       });
     //
     // const data = await response.json();
-    // // console.log(data.status_code);
     // if (response.status === 200) {
-    //   console.log(response);
     //   if (data.status_code === 200) {
     // localStorage.setItem("token_type", data.token_type);
     // localStorage.setItem("access_token", data.access_token);
@@ -34,7 +32,6 @@ export default {
     //   token_type: data.token_type,
     // });
     //   } else {
-    //     console.log(data.message);
     //     // const error = new Error(data.message || "Something is wrong!");
     //     // throw error;
     //   }

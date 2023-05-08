@@ -130,6 +130,7 @@ export default {
         typeInput: "password",
         placeholder: "Điền mật khẩu",
         id: "password",
+        appendIcon: "fa-duotone fa-eye-slash",
       },
       username: {
         value: "",
@@ -175,8 +176,8 @@ export default {
       }
     },
     async handleSubmit() {
-      this.isValidForm = true;
-      await this.validateForm();
+      // this.isValidForm = true;
+      // await this.validateForm();
       if (this.isValidForm) {
         try {
           await this.handleLogin({

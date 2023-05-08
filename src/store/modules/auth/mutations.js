@@ -1,11 +1,11 @@
 export default {
   handleLogin(state, payload) {
-    state.token = payload.access_token;
+    state.access_token = payload.access_token;
     state.token_type = payload.token_type;
   },
   handleSetToken(state, payload) {
     state.access_token = payload;
-    localStorage.setItem("token", payload);
+    localStorage.setItem("access_token", payload);
   },
   handleClearLocalStorage(state) {
     state.access_token = null;
@@ -16,6 +16,6 @@ export default {
     localStorage.removeItem("mobileScreen");
   },
   handleKeepLogin(state, payload) {
-    state.token = payload;
+    state.access_token = payload;
   },
 };

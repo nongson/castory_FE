@@ -76,9 +76,9 @@ const router = new VueRouter({
 
 // ---------------- guard router using token in localStorage ---------------- /
 router.beforeEach((to, from, next) => {
-  if (to.meta.needLogin && !!localStorage.getItem("token") === false) {
+  if (to.meta.needLogin && !!localStorage.getItem("access_token") === false) {
     next("/login");
-  } else if (!to.meta.needLogin && !!localStorage.getItem("token")) {
+  } else if (!to.meta.needLogin && !!localStorage.getItem("access_token")) {
     next("/list");
   } else if (
     to.meta.onlyMobile &&
