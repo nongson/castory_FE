@@ -28,7 +28,7 @@
             link
             @click="handleEmit(option.emitFunction, item.id)"
           >
-            <v-img :src="getIcon(option.icon)" alt="" />
+            <v-img :src="option.icon && getIcon(option.icon)" alt="" />
             <v-list-item-title class="ml-4 d-flex">
               {{ option.title }}
             </v-list-item-title>
@@ -48,6 +48,11 @@ export default {
     },
     items: {
       type: Array,
+      default: () => [],
+    },
+    options: {
+      type: Array,
+      default: () => [],
     },
     cols: {
       type: Number,
@@ -66,22 +71,7 @@ export default {
     },
   },
   data() {
-    return {
-      options: [
-        {
-          color: "color: #1BB763",
-          icon: "bookmark",
-          title: "Ôn tập trước",
-          emitFunction: "study",
-        },
-        {
-          color: "color: #FD443A",
-          icon: "openbook",
-          title: "Ôn tập ngẫu nhiên",
-          emitFunction: "randomStudy",
-        },
-      ],
-    };
+    return {};
   },
 };
 </script>
