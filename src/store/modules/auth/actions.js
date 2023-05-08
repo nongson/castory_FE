@@ -18,7 +18,7 @@ export default {
             token_type: res.data.token_type,
           });
         } else {
-          const error = new Error(res.data.message || "Something is wrong!");
+          const error = res.data.message || "Something is wrong!";
           throw error;
         }
       });
