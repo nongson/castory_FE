@@ -1,17 +1,17 @@
 export default {
   handleLogin(state, payload) {
-    state.token = payload.token;
-    state.userId = payload.userId;
+    state.token = payload.access_token;
+    state.token_type = payload.token_type;
   },
   handleSetToken(state, payload) {
-    state.token = payload;
+    state.access_token = payload;
     localStorage.setItem("token", payload);
   },
   handleClearLocalStorage(state) {
-    state.token = null;
-    state.userId = null;
-    localStorage.removeItem("token");
-    localStorage.removeItem("userId");
+    state.access_token = null;
+    state.token_type = null;
+    localStorage.removeItem("access_token");
+    localStorage.removeItem("token_type");
     localStorage.removeItem("setCardId");
     localStorage.removeItem("mobileScreen");
   },

@@ -155,7 +155,7 @@ export default {
       if (this.username.value === "") {
         this.username.typeError = "empty";
         this.isValidForm = false;
-      } else if (this.username.value.length < 6) {
+      } else if (this.username.value.length < 2) {
         this.username.typeError = "minlength";
         this.isValidForm = false;
       } else if (this.username.value.length > 127) {
