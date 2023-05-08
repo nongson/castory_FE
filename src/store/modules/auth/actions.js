@@ -9,7 +9,8 @@ export default {
         password: payload.password,
       })
       .then((res) => {
-        if (res.status === 200) {
+        console.log(res);
+        if (res.data.status_code === 200) {
           localStorage.setItem("token_type", res.data.token_type);
           localStorage.setItem("access_token", res.data.access_token);
           context.commit("handleLogin", {
@@ -17,7 +18,7 @@ export default {
             token_type: res.data.token_type,
           });
         } else {
-          const error = new Error(res.data.message || "Something is wrong!");
+          const error = res.data.message || "Something is wrong!";
           throw error;
         }
       });
