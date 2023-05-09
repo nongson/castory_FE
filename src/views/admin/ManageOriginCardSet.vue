@@ -75,7 +75,7 @@
                 :items="getCardSetDetails"
                 :headers="cardSetDetailHeader"
                 :options="this.optionsCardSet"
-                @delete="handleShowDialogDelete"
+                @delete="handleShowDialog"
               />
             </v-col>
             <!-- ------------------Add new card set----------------- -->
