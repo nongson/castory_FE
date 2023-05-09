@@ -1,103 +1,58 @@
 <template>
-  <v-container fluid>
-    <v-row
-      class="mt-8 d-flex flex-column"
-      :class="{
-        'px-5': $vuetify.breakpoint.sm,
-        'px-4': $vuetify.breakpoint.xsOnly,
-      }"
-    >
-      <v-row>
-        <v-col cols="12" md="3" sm="3" xs="3" class="pa-1">
-          <v-flex
-            class="d-flex align-center"
-            :class="{
-              ['pa-4 mb-3']: $vuetify.breakpoint.smAndUp,
-            }"
-          >
-            <img
-              v-if="$vuetify.breakpoint.smAndUp"
-              src="@/assets/icons/button-back.svg"
-              alt=""
-              style="cursor: pointer"
-            />
-            <v-flex
-              class="ml-3"
-              :class="{ 'pl-1': $vuetify.breakpoint.xsOnly }"
-            >
-              <h4>Admin</h4>
-            </v-flex>
-          </v-flex>
-        </v-col>
-        <v-col
-          cols="12"
-          md="9"
-          sm="9"
-          xs="9"
-          :class="{
-            ['px-5 py-4']: $vuetify.breakpoint.xsOnly,
-            'pr-5': $vuetify.breakpoint.sm,
-            'pr-4': $vuetify.breakpoint.mdAndUp,
-          }"
-        >
-          <v-flex>
-            <InputComponent
-              :inputProps="inputProps"
-              v-model.trim="searchValues"
-            />
-          </v-flex>
-        </v-col>
-      </v-row>
-      <v-row :class="{ 'mt-1': $vuetify.breakpoint.xsOnly }" class="px-4">
-        <v-col cols="12" md="3" sm="12" class="pa-1">
-          <TableComponent
-            :items="getCardSet"
-            :headers="cardSetHeader"
-            :options="this.optionsFolder"
-            @delete="handleShowDialogDelete"
+  <v-container fluid class="mt-5">
+    <v-row :class="{ 'mt-1': $vuetify.breakpoint.xsOnly }" class="px-4">
+      <v-col cols="12" md="3" sm="12" class="pa-1" style="margin-top: 82px">
+        <TableComponent
+          :items="getCardSet"
+          :headers="cardSetHeader"
+          :options="this.optionsFolder"
+          @delete="handleShowDialogDelete"
+        />
+        <ButtonComponent
+          title="Tạo bộ thẻ mới"
+          appendIcon="white-plus"
+          class="mt-3"
+          @click="handleShowDialogAddFolder"
+        />
+      </v-col>
+      <v-col
+        cols="12"
+        md="5"
+        sm="12"
+        :class="{ 'mt-5': $vuetify.breakpoint.smAndDown }"
+      >
+        <v-flex class="mb-4">
+          <InputComponent
+            :inputProps="inputProps"
+            v-model.trim="searchValues"
           />
-          <ButtonComponent
-            title="Tạo bộ thẻ mới"
-            appendIcon="plus"
-            class="mt-3"
-            @click="handleShowDialogAddFolder"
-          />
-        </v-col>
-        <v-col
-          cols="12"
-          md="9"
-          sm="12"
-          :class="{ 'mt-5': $vuetify.breakpoint.smAndDown }"
-        >
-          <v-row>
-            <v-col cols="12" md="6" sm="6" class="pa-1">
-              <TableComponent
-                :items="getCardSetDetails"
-                :headers="cardSetDetailHeader"
-                :options="this.optionsCardSet"
-                @delete="handleShowDialog"
-              />
-            </v-col>
-            <!-- ------------------Add new card set----------------- -->
-            <v-col cols="12" md="6" sm="6" class="pa-1 pr-0">
-              <v-card class="browse-card-detail" elevation="0">
-                <v-card-actions class="pa-0 ml-3">
-                  <ButtonComponent
-                    title="Tạo thẻ mới"
-                    @click="handleAddCardForm"
-                    appendIcon="plus"
-                  />
-                </v-card-actions>
-                <!-- ------------------Add new card--------------------- -->
-                <div v-if="showAddFrom">
-                  <FormAddNewCard />
-                </div>
-              </v-card>
-            </v-col>
-          </v-row>
-        </v-col>
-      </v-row>
+        </v-flex>
+        <TableComponent
+          :items="getCardSetDetails"
+          :headers="cardSetDetailHeader"
+          :options="this.optionsCardSet"
+          @delete="handleShowDialogDelete"
+        />
+        <ButtonComponent title="Chọn thẻ" class="d-flex justify-end mt-3" />
+      </v-col>
+      <!-- ------------------Add new card set----------------- -->
+      <v-col cols="12" md="4" sm="6" class="pa-1 pr-0" style="margin-top: 82px">
+        <v-card class="browse-card-detail" elevation="0">
+          <v-card-actions class="pa-0 ml-3">
+            <ButtonComponent
+              title="Tạo thẻ mới"
+              @click="handleAddCardForm"
+              appendIcon="white-plus"
+            />
+          </v-card-actions>
+          <!-- ------------------Add new card--------------------- -->
+          <div v-if="showAddFrom">
+            <FormAddNewCard />
+          </div>
+        </v-card>
+      </v-col>
     </v-row>
+
     <DialogComponent
       typeDialog="delete-folder"
       :showDialogValue="showDialogDelete"
@@ -117,6 +72,7 @@ import TableComponent from "@/components/ui/TableComponent.vue";
 import { mapGetters } from "vuex";
 import ButtonComponent from "@/components/ui/ButtonComponent.vue";
 import FormAddNewCard from "@/views/admin/FormAddNewCard.vue";
+import FolderHeader from "@/views/admin/FolderHeader.vue";
 
 export default {
   components: {
@@ -141,7 +97,7 @@ export default {
       // -----------------card set data table------------------
       cardSetHeader: [
         {
-          text: "Chọn thư mục",
+          text: <FolderHeader />,
           value: "cardSetName",
           sortable: false,
         },
