@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container fluid>
     <v-row
       class="mt-8 d-flex flex-column"
       :class="{
@@ -54,7 +54,13 @@
             :items="getCardSet"
             :headers="cardSetHeader"
             :options="this.optionsFolder"
-            @delete="handleShowDialog"
+            @delete="handleShowDialogDelete"
+          />
+          <ButtonComponent
+            title="Tạo bộ thẻ mới"
+            appendIcon="plus"
+            class="mt-3"
+            @click="handleShowDialogAddFolder"
           />
         </v-col>
         <v-col
@@ -69,20 +75,37 @@
                 :items="getCardSetDetails"
                 :headers="cardSetDetailHeader"
                 :options="this.optionsCardSet"
-                @delete="handleShowDialog"
+                @delete="handleShowDialogDelete"
               />
             </v-col>
             <!-- ------------------Add new card set----------------- -->
             <v-col cols="12" md="6" sm="6" class="pa-1 pr-0">
-              <v-card class="browse-card-detail" elevation="0"> </v-card>
+              <v-card class="browse-card-detail" elevation="0">
+                <v-card-actions class="pa-0 ml-3">
+                  <ButtonComponent
+                    title="Tạo thẻ mới"
+                    @click="handleAddCardForm"
+                    appendIcon="plus"
+                  />
+                </v-card-actions>
+                <!-- ------------------Add new card--------------------- -->
+                <div v-if="showAddFrom">
+                  <FormAddNewCard />
+                </div>
+              </v-card>
             </v-col>
           </v-row>
         </v-col>
       </v-row>
     </v-row>
     <DialogComponent
-      typeDialog="delete"
-      :showDialogValue="showDialog"
+      typeDialog="delete-folder"
+      :showDialogValue="showDialogDelete"
+      @closeDialog="handleCloseDialog"
+    />
+    <DialogComponent
+      typeDialog="add-folder"
+      :showDialogValue="showDialogAddFolder"
       @closeDialog="handleCloseDialog"
     />
   </v-container>
@@ -92,12 +115,22 @@ import InputComponent from "@/components/ui/InputComponent.vue";
 import DialogComponent from "@/components/ui/DialogComponent.vue";
 import TableComponent from "@/components/ui/TableComponent.vue";
 import { mapGetters } from "vuex";
+import ButtonComponent from "@/components/ui/ButtonComponent.vue";
+import FormAddNewCard from "@/views/admin/FormAddNewCard.vue";
 
 export default {
-  components: { TableComponent, InputComponent, DialogComponent },
+  components: {
+    FormAddNewCard,
+    ButtonComponent,
+    TableComponent,
+    InputComponent,
+    DialogComponent,
+  },
   data() {
     return {
-      showDialog: false,
+      showDialogDelete: false,
+      showDialogAddFolder: false,
+      showAddFrom: false,
       inputProps: {
         typeInput: "text",
         placeholder: "Tìm kiếm thẻ",
@@ -186,11 +219,18 @@ export default {
     ...mapGetters("admin", ["getCardSet", "getCardSetDetails"]),
   },
   methods: {
-    handleShowDialog() {
-      this.showDialog = true;
+    handleShowDialogDelete() {
+      this.showDialogDelete = true;
+    },
+    handleShowDialogAddFolder() {
+      this.showDialogAddFolder = true;
+    },
+    handleAddCardForm() {
+      this.showAddFrom = !this.showAddFrom;
     },
     handleCloseDialog() {
-      this.showDialog = false;
+      this.showDialogDelete = false;
+      this.showDialogAddFolder = false;
     },
   },
 };
@@ -198,9 +238,6 @@ export default {
 
 <style lang="sass" scoped>
 .browse-card-detail
-  background-color: #F9FBFC
-  border-radius: 12px
-  border: 1px solid #E9EDF5
   min-height: 70vh
 .browse-card-title
   color: #1BB763
