@@ -6,7 +6,7 @@
           :items="getCardSet"
           :headers="cardSetHeader"
           :options="this.optionsFolder"
-          @delete="handleShowDialogDelete"
+          @deleteCardSet="handleShowDialogDelete"
         />
         <ButtonComponent
           title="Tạo bộ thẻ mới"
@@ -36,17 +36,35 @@
         <ButtonComponent title="Chọn thẻ" class="d-flex justify-end mt-3" />
       </v-col>
       <!-- ------------------Add new card set----------------- -->
-      <v-col cols="12" md="4" sm="6" class="pa-1 pr-0" style="margin-top: 82px">
+      <v-col
+        cols="12"
+        md="4"
+        sm="6"
+        class="pa-1 pr-0"
+        :style="showBtnAddCard ? 'margin-top:  82px' : 'margin-top:  26px'"
+      >
         <v-card class="browse-card-detail" elevation="0">
-          <v-card-actions class="pa-0 ml-3">
+          <v-card-actions
+            class="pa-0 ml-3 d-flex"
+            :class="{ 'cancel-position': !showBtnAddCard }"
+          >
             <ButtonComponent
+              v-if="showBtnAddCard"
               title="Tạo thẻ mới"
               @click="handleAddCardForm"
               appendIcon="white-plus"
             />
+            <div
+              v-if="!showBtnAddCard"
+              @click="handleShowDialogCancelAddCard"
+              class="pa-3"
+              style="cursor: pointer"
+            >
+              <img src="@/assets/icons/cancel.svg" alt="" />
+            </div>
           </v-card-actions>
           <!-- ------------------Add new card--------------------- -->
-          <div v-if="showAddFrom">
+          <div v-if="showAddForm">
             <FormAddNewCard />
           </div>
         </v-card>
@@ -62,6 +80,12 @@
       typeDialog="add-folder"
       :showDialogValue="showDialogAddFolder"
       @closeDialog="handleCloseDialog"
+    />
+    <DialogComponent
+      typeDialog="cancel-add-card"
+      :showDialogValue="showDialogCancelAddCard"
+      @closeDialog="handleCloseDialog"
+      @confirmRequest="handleCancelAddCard"
     />
   </v-container>
 </template>
@@ -86,7 +110,9 @@ export default {
     return {
       showDialogDelete: false,
       showDialogAddFolder: false,
-      showAddFrom: false,
+      showDialogCancelAddCard: false,
+      showBtnAddCard: true,
+      showAddForm: false,
       inputProps: {
         typeInput: "text",
         placeholder: "Tìm kiếm thẻ",
@@ -123,7 +149,7 @@ export default {
         },
         {
           title: "Xoá",
-          emitFunction: "delete",
+          emitFunction: "deleteCardSet",
         },
       ],
 
@@ -181,12 +207,22 @@ export default {
     handleShowDialogAddFolder() {
       this.showDialogAddFolder = true;
     },
-    handleAddCardForm() {
-      this.showAddFrom = !this.showAddFrom;
+    handleShowDialogCancelAddCard() {
+      this.showDialogCancelAddCard = true;
     },
     handleCloseDialog() {
       this.showDialogDelete = false;
       this.showDialogAddFolder = false;
+      this.showDialogCancelAddCard = false;
+    },
+    handleAddCardForm() {
+      this.showAddForm = true;
+      this.showBtnAddCard = false;
+    },
+    handleCancelAddCard() {
+      this.showAddForm = false;
+      this.showBtnAddCard = true;
+      this.showDialogCancelAddCard = false;
     },
   },
 };
@@ -202,4 +238,6 @@ export default {
 
 li
   font-weight: bold
+.cancel-position
+  justify-content: end
 </style>
