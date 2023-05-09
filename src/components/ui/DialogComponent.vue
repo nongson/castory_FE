@@ -127,6 +127,78 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+    <!--    -----------------------------------   -->
+    <!-- ---------------------Dialog for admin-------------------   -->
+    <!--    -----------------------------------   -->
+
+    <!--  Dialog create new card set  -->
+    <v-dialog
+      v-if="typeDialog === 'add-folder' || typeDialog === 'add-cardSet'"
+      :value="showDialogValue"
+      max-width="400"
+      @click:outside="handleCloseDialog"
+    >
+      <v-card class="pa-8">
+        <v-card-title class="pa-0 mb-7">
+          <h5
+            class="dialog-delete-title"
+            v-text="typeDialog === 'add-folder' ? 'Tên thư mục' : 'Tên bộ thẻ'"
+          />
+        </v-card-title>
+        <v-card-text class="pa-0 mb-7">
+          <InputComponent
+            :inputProps="
+              typeDialog === 'add-folder'
+                ? addFolderInputProps
+                : addCardSetInputProps
+            "
+            class="ma-0"
+          />
+        </v-card-text>
+        <v-card-actions class="d-flex align-center pa-0">
+          <v-spacer></v-spacer>
+          <v-btn class="cancel-btn" elevation="0" @click="handleCloseDialog">
+            <h7>Huỷ</h7>
+          </v-btn>
+          <ButtonComponent
+            :title="'OK'"
+            class="ml-3"
+            @click="handleConfirmRequest"
+          />
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <!-- ----------Delete folder------------ -->
+    <v-dialog
+      v-if="typeDialog === 'delete-folder'"
+      :value="showDialogValue"
+      max-width="400"
+      @click:outside="handleCloseDialog"
+    >
+      <v-card class="pa-8">
+        <v-card-title class="pa-0 mb-7">
+          <h5 class="dialog-delete-title" v-text="'Xoá thư mục'" />
+        </v-card-title>
+        <v-card-text class="pa-0 mb-7">
+          <h7
+            class="dialog-delete-subtitle"
+            v-text="'Thư mục sẽ bị xóa vĩnh viễn'"
+          >
+          </h7>
+        </v-card-text>
+        <v-card-actions class="d-flex align-center pa-0">
+          <v-spacer></v-spacer>
+          <v-btn class="cancel-btn" elevation="0" @click="handleCloseDialog">
+            <h7>Huỷ</h7>
+          </v-btn>
+          <ButtonComponent
+            :title="'Xoá'"
+            class="ml-3"
+            @click="handleConfirmRequest"
+          />
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-row>
 </template>
 
@@ -140,6 +212,12 @@ export default {
     return {
       inputProps: {
         placeholder: "Nhập số thẻ",
+      },
+      addFolderInputProps: {
+        placeholder: "Nhập tên thư mục",
+      },
+      addCardSetInputProps: {
+        placeholder: "Nhập tên bộ thẻ",
       },
     };
   },

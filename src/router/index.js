@@ -8,6 +8,7 @@ import CardQuestionView from "@/views/card/CardQuestionView.vue";
 import CardAnswerView from "@/views/card/CardAnswerView.vue";
 import BrowseCardSetView from "@/views/browse/BrowseCardSetView.vue";
 import BrowseCardSetDetailView from "@/views/browse/BrowseCardSetDetailView.vue";
+import ManageOriginCardSet from "@/views/admin/ManageOriginCardSet.vue";
 
 Vue.use(VueRouter);
 
@@ -65,6 +66,13 @@ const routes = [
     name: "browseCardSetDetails",
     component: BrowseCardSetDetailView,
     meta: { needLogin: true, onlyMobile: true },
+  },
+  //   ---------------admin----------------
+  {
+    path: "/manage-origin-set",
+    name: "manageOriginCardSet",
+    component: ManageOriginCardSet,
+    meta: { needLogin: true },
   },
 ];
 
