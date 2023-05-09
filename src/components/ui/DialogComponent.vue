@@ -168,33 +168,54 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-    <!-- ----------Delete folder------------ -->
+    <!-- ----------Delete folder and cancel add card------------ -->
     <v-dialog
-      v-if="typeDialog === 'delete-folder'"
+      v-if="typeDialog === 'delete-folder' || typeDialog === 'cancel-add-card'"
       :value="showDialogValue"
       max-width="400"
       @click:outside="handleCloseDialog"
     >
       <v-card class="pa-8">
         <v-card-title class="pa-0 mb-7">
-          <h5 class="dialog-delete-title" v-text="'Xoá thư mục'" />
+          <h5
+            class="dialog-delete-title"
+            v-text="
+              typeDialog === 'delete-folder'
+                ? 'Xoá bộ thẻ'
+                : 'Tiếp tục tạo thẻ ?'
+            "
+          />
         </v-card-title>
-        <v-card-text class="pa-0 mb-7">
-          <h7
-            class="dialog-delete-subtitle"
-            v-text="'Thư mục sẽ bị xóa vĩnh viễn'"
-          >
-          </h7>
-        </v-card-text>
         <v-card-actions class="d-flex align-center pa-0">
           <v-spacer></v-spacer>
-          <v-btn class="cancel-btn" elevation="0" @click="handleCloseDialog">
+          <v-btn
+            v-if="typeDialog === 'delete-folder'"
+            class="cancel-btn"
+            elevation="0"
+            @click="handleCloseDialog"
+          >
             <h7>Huỷ</h7>
           </v-btn>
+          <v-btn
+            v-if="typeDialog === 'cancel-add-card'"
+            class="cancel-btn"
+            elevation="0"
+            @click="handleConfirmRequest"
+          >
+            <h7>No</h7>
+          </v-btn>
+
           <ButtonComponent
+            v-if="typeDialog === 'delete-folder'"
             :title="'Xoá'"
             class="ml-3"
             @click="handleConfirmRequest"
+          />
+          <ButtonComponent
+            v-if="typeDialog === 'cancel-add-card'"
+            :title="'Yes'"
+            class="ml-3"
+            @click="handleCloseDialog"
           />
         </v-card-actions>
       </v-card>

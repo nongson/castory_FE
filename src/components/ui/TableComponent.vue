@@ -20,7 +20,7 @@
             alt=""
           />
         </template>
-        <v-list class="pa-0 layout-list">
+        <v-list class="pa-0 layout-list" style="min-width: 180px">
           <v-list-item
             class="px-5 py-1"
             v-for="(option, index) in options"
