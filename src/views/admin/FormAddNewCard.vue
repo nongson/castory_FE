@@ -120,5 +120,5 @@ export default {
 
 <style lang="sass" scoped>
 ::v-deep .v-btn
-  min-width: 180px !important
+  min-width: 150px !important
 </style>

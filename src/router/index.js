@@ -8,7 +8,7 @@ import CardQuestionView from "@/views/card/CardQuestionView.vue";
 import CardAnswerView from "@/views/card/CardAnswerView.vue";
 import BrowseCardSetView from "@/views/browse/BrowseCardSetView.vue";
 import BrowseCardSetDetailView from "@/views/browse/BrowseCardSetDetailView.vue";
-import ManageOriginCardSet from "@/views/admin/ManageOriginCardSet.vue";
+import TabsView from "@/views/admin/TabsView.vue";
 
 Vue.use(VueRouter);
 
@@ -69,9 +69,9 @@ const routes = [
   },
   //   ---------------admin----------------
   {
-    path: "/manage-origin-set",
-    name: "manageOriginCardSet",
-    component: ManageOriginCardSet,
+    path: "/manage",
+    name: "manage",
+    component: TabsView,
     meta: { needLogin: true },
   },
 ];
