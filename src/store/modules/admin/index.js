@@ -46,6 +46,7 @@ export default {
       userDetails: [
         {
           id: "1",
+          role: "0",
           name: "Nông Thế Sơn",
           userName: "sonbeo",
           password: "123456",
@@ -54,6 +55,7 @@ export default {
         },
         {
           id: "2",
+          role: "1",
           name: "Thái Quang Minh",
           userName: "tequyem",
           password: "123456",
@@ -62,6 +64,7 @@ export default {
         },
         {
           id: "3",
+          role: "1",
           name: "Lê Thị Hoài",
           userName: "hoailt",
           password: "123456",
@@ -70,6 +73,7 @@ export default {
         },
         {
           id: "4",
+          role: "1",
           name: "Nguyễn Quang Quân",
           userName: "quannq",
           password: "123456",

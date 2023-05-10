@@ -39,6 +39,7 @@
           :headers="userDetailsHeader"
           :options="userDetailsOptions"
           @delete="handleShowDialogDeleteUser"
+          @edit="handleShowDialogEditUser"
         />
       </v-col>
     </v-row>
@@ -128,7 +129,8 @@ export default {
     ...mapGetters("admin", ["getUserDetails", "getAllClassUserDetails"]),
   },
   methods: {
-    handleShowDialogDeleteUser() {
+    handleShowDialogDeleteUser(user) {
+      console.log(user);
       this.showDialogDelete = true;
     },
     handleShowDialogAddAdmin() {
@@ -142,8 +144,12 @@ export default {
       this.showDialogAddAdmin = false;
       this.showDialogAddStudent = false;
     },
-    handleDeleteUser(id) {
-      console.log(id);
+    handleShowDialogEditUser(user) {
+      if (user.role === "0") {
+        this.handleShowDialogAddAdmin();
+      } else {
+        this.handleShowDialogAddStudent();
+      }
     },
   },
 };
