@@ -22,7 +22,7 @@
             <v-list-item link @click="handleShowDialogAddStudent">
               <v-list-item-title>Thêm học sinh mới</v-list-item-title>
             </v-list-item>
-            <v-list-item link>
+            <v-list-item link @click="handleShowDialogManageClasses">
               <v-list-item-title>Quản lý lớp</v-list-item-title>
             </v-list-item>
           </v-list>
@@ -57,7 +57,20 @@
       typeDialog="add-student"
       :showDialogValue="showDialogAddStudent"
       @closeDialog="handleCloseDialog"
-      :itemsSelect="getAllClassUserDetails"
+      :itemsSelect="getAllClassesName"
+    />
+    <DialogComponent
+      typeDialog="manage-classes"
+      :showDialogValue="showDialogManageClasses"
+      :itemsSelect="getAllClasses"
+      @closeDialog="handleCloseDialog"
+      @deleteClass="handleDeleteClass"
+      @editClass="handleEditClass"
+    />
+    <DialogComponent
+      typeDialog="edit-class"
+      :showDialogValue="showDialogEditClass"
+      @closeDialog="handleCloseDialog"
     />
   </v-container>
 </template>
@@ -73,6 +86,8 @@ export default {
       showDialogDelete: false,
       showDialogAddAdmin: false,
       showDialogAddStudent: false,
+      showDialogManageClasses: false,
+      showDialogEditClass: false,
       inputProps: {
         placeholder: "Tìm kiếm học sinh",
       },
@@ -126,7 +141,11 @@ export default {
     };
   },
   computed: {
-    ...mapGetters("admin", ["getUserDetails", "getAllClassUserDetails"]),
+    ...mapGetters("admin", [
+      "getUserDetails",
+      "getAllClassesName",
+      "getAllClasses",
+    ]),
   },
   methods: {
     handleShowDialogDeleteUser(user) {
@@ -139,17 +158,31 @@ export default {
     handleShowDialogAddStudent() {
       this.showDialogAddStudent = true;
     },
-    handleCloseDialog() {
-      this.showDialogDelete = false;
-      this.showDialogAddAdmin = false;
-      this.showDialogAddStudent = false;
-    },
     handleShowDialogEditUser(user) {
       if (user.role === "0") {
         this.handleShowDialogAddAdmin();
       } else {
         this.handleShowDialogAddStudent();
       }
+    },
+    handleShowDialogManageClasses() {
+      this.showDialogManageClasses = true;
+    },
+    handleCloseDialog() {
+      this.showDialogDelete = false;
+      this.showDialogAddAdmin = false;
+      this.showDialogAddStudent = false;
+      this.showDialogManageClasses = false;
+      this.showDialogEditClass = false;
+    },
+    handleEditClass() {
+      this.showDialogManageClasses = false;
+      this.showDialogEditClass = true;
+    },
+    handleDeleteClass(item) {
+      console.log(item.id);
+      this.showDialogManageClasses = false;
+      this.showDialogDelete = true;
     },
   },
 };

@@ -133,7 +133,11 @@
 
     <!--  Dialog create new card set  -->
     <v-dialog
-      v-if="typeDialog === 'add-folder' || typeDialog === 'add-cardSet'"
+      v-if="
+        typeDialog === 'add-folder' ||
+        typeDialog === 'add-cardSet' ||
+        typeDialog === 'edit-class'
+      "
       :value="showDialogValue"
       max-width="400"
       @click:outside="handleCloseDialog"
@@ -141,17 +145,35 @@
       <v-card class="pa-8">
         <v-card-title class="pa-0 mb-7">
           <h5
+            v-if="typeDialog === 'add-folder'"
             class="dialog-delete-title"
-            v-text="typeDialog === 'add-folder' ? 'Tên thư mục' : 'Tên bộ thẻ'"
+            v-text="'Tên thư mục'"
+          />
+          <h5
+            v-if="typeDialog === 'add-cardSet'"
+            class="dialog-delete-title"
+            v-text="'Tên bộ thẻ'"
+          />
+          <h5
+            v-if="typeDialog === 'edit-class'"
+            class="dialog-delete-title"
+            v-text="'Tên lớp'"
           />
         </v-card-title>
         <v-card-text class="pa-0 mb-7">
           <InputComponent
-            :inputProps="
-              typeDialog === 'add-folder'
-                ? addFolderInputProps
-                : addCardSetInputProps
-            "
+            v-if="typeDialog === 'add-folder'"
+            :inputProps="addFolderInputProps"
+            class="ma-0"
+          />
+          <InputComponent
+            v-if="typeDialog === 'add-cardSet'"
+            :inputProps="addCardSetInputProps"
+            class="ma-0"
+          />
+          <InputComponent
+            v-if="typeDialog === 'edit-class'"
+            inputProps=""
             class="ma-0"
           />
         </v-card-text>
@@ -317,6 +339,54 @@
         </v-card>
       </form>
     </v-dialog>
+    <!-- ----------Manage classes dialog------------ -->
+    <v-dialog
+      v-if="typeDialog === 'manage-classes'"
+      :value="showDialogValue"
+      max-width="400"
+      @click:outside="handleCloseDialog"
+    >
+      <v-card class="pa-8">
+        <v-card-title class="pa-0 mb-7">
+          <h5 class="dialog-delete-title" v-text="'Danh sách lớp'" />
+        </v-card-title>
+        <v-card-text class="pa-0 mb-7">
+          <h6 class="py-4" style="cursor: pointer">Thêm lớp</h6>
+          <div
+            v-for="item in itemsSelect"
+            :key="item.id"
+            class="d-flex py-4 justify-space-between"
+          >
+            <h6 v-text="item.name"></h6>
+            <v-menu offset-y transition="slide-y-transition" location="end">
+              <!-- -------------------Menu list-------------------- -->
+              <template v-slot:activator="{ attrs, on }">
+                <img
+                  src="@/assets/icons/menu.svg"
+                  style="cursor: pointer; padding: 15px 2px"
+                  v-bind="attrs"
+                  v-on="on"
+                  alt=""
+                />
+              </template>
+              <v-list class="pa-0 layout-list" style="min-width: 180px">
+                <v-list-item
+                  class="px-5 py-1"
+                  v-for="(option, index) in optionsManageClasses"
+                  :key="index"
+                  link
+                  @click="handleEmit(option.emitFunction, item)"
+                >
+                  <v-list-item-title class="ml-4 d-flex">
+                    {{ option.title }}
+                  </v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
+          </div>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
   </v-row>
 </template>
 
@@ -351,6 +421,16 @@ export default {
       addCardSetInputProps: {
         placeholder: "Nhập tên bộ thẻ",
       },
+      optionsManageClasses: [
+        {
+          title: "Sửa",
+          emitFunction: "editClass",
+        },
+        {
+          title: "Xoá",
+          emitFunction: "deleteClass",
+        },
+      ],
     };
   },
   methods: {
@@ -362,6 +442,9 @@ export default {
     },
     handleReview() {
       this.$emit("review");
+    },
+    handleEmit(action, item) {
+      return this.$emit(action, item);
     },
   },
 };

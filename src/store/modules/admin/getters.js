@@ -8,11 +8,14 @@ export default {
   getUserDetails(state) {
     return state.userDetails;
   },
-  getAllClassUserDetails(state) {
+  getAllClassesName(state) {
     const classes = [];
     state.classes.map((classItem) => {
       classes.push(classItem.name);
     });
     return classes;
+  },
+  getAllClasses(state) {
+    return state.classes;
   },
 };
