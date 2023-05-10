@@ -116,12 +116,15 @@
             Nhập số thẻ từ 1 - [tổng số thẻ]
           </text-averta-400>
         </v-card-text>
-        <v-card-actions class="d-flex align-center pa-0">
+        <v-card-actions
+          class="d-flex align-center pa-0"
+          :class="$vuetify.breakpoint.xsOnly ? 'flex-wrap' : ''"
+        >
           <InputComponent :inputProps="inputProps" class="ma-0" />
           <ButtonComponent
             title="Bắt đầu ôn"
             icon="fa-arrow-right"
-            class="ml-3"
+            :class="$vuetify.breakpoint.xsOnly ? 'mt-3 ml-0' : 'ml-3'"
             @click="handleReview"
           />
         </v-card-actions>

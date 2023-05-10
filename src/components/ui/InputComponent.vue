@@ -3,6 +3,7 @@
     :type="inputProps.typeInput"
     :placeholder="inputProps.placeholder"
     :id="inputProps.id"
+    :class="$vuetify.breakpoint.smAndDown ? 'smd' : ''"
     @input="handleChangeInput($event.target.value)"
     @focus="$emit('focus')"
     autoComplete
@@ -77,4 +78,6 @@ input
   border-radius: 12px
   background-color: #F9FBFC
   min-width: 305px
+  &.smd
+    min-width: unset
 </style>
