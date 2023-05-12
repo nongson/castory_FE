@@ -21,6 +21,6 @@
   </v-container>
 </template>
 <script setup>
-import ManageOriginCardSet from "@/views/admin/ManageOriginCardSet.vue";
-import ManageStudent from "@/views/admin/ManageStudent.vue";
+import ManageOriginCardSet from "@/views/admin/manage-origin-card/ManageOriginCardSet.vue";
+import ManageStudent from "@/views/admin/manage-student/ManageStudent.vue";
 </script>

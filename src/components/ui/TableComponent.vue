@@ -6,7 +6,7 @@
     :hide-default-footer="true"
     disable-pagination
     mobile-breakpoint="0"
-    @click:row="(item) => handleNavigate(item.id)"
+    @click:row="(item) => handleNavigate(item)"
   >
     <template v-slot:[`item.actions`]="{ item }">
       <v-menu offset-y transition="slide-y-transition" location="end">
@@ -66,8 +66,8 @@ export default {
     handleEmit(action, item) {
       return this.$emit(action, item);
     },
-    handleNavigate(id) {
-      this.$emit("navigate", id);
+    handleNavigate(item) {
+      this.$emit("navigate", item);
     },
   },
   data() {

@@ -95,8 +95,8 @@ import DialogComponent from "@/components/ui/DialogComponent.vue";
 import TableComponent from "@/components/ui/TableComponent.vue";
 import { mapGetters } from "vuex";
 import ButtonComponent from "@/components/ui/ButtonComponent.vue";
-import FormAddNewCard from "@/views/admin/FormAddNewCard.vue";
-import FolderHeader from "@/views/admin/FolderHeader.vue";
+import FormAddNewCard from "@/views/admin/manage-origin-card/FormAddNewCard.vue";
+import FolderHeader from "@/views/admin/manage-origin-card/FolderHeader.vue";
 
 export default {
   components: {

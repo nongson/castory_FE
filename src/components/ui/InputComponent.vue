@@ -59,12 +59,20 @@ export default {
       },
     },
   },
+  data() {
+    return {
+      timer: null,
+    };
+  },
   methods: {
     getIcon(name) {
       return require("@/assets/icons/" + name + ".svg");
     },
     handleChangeInput(value) {
-      this.$emit("input", value);
+      clearTimeout(this.timer);
+      this.timer = setTimeout(() => {
+        this.$emit("input", value);
+      }, 2000);
     },
   },
 };
