@@ -9,6 +9,8 @@ import CardAnswerView from "@/views/card/CardAnswerView.vue";
 import BrowseCardSetView from "@/views/browse/BrowseCardSetView.vue";
 import BrowseCardSetDetailView from "@/views/browse/BrowseCardSetDetailView.vue";
 import TabsView from "@/views/admin/TabsView.vue";
+import StudentDetails from "@/views/admin/manage-student/StudentDetails.vue";
+import BrowseAdminView from "@/views/admin/manage-student/BrowseAdminView.vue";
 
 Vue.use(VueRouter);
 
@@ -72,6 +74,18 @@ const routes = [
     path: "/manage",
     name: "manage",
     component: TabsView,
+    meta: { needLogin: true },
+  },
+  {
+    path: "/student/:id",
+    name: "student",
+    component: StudentDetails,
+    meta: { needLogin: true },
+  },
+  {
+    path: "/browse-admin/student/:id",
+    name: "browse-admin",
+    component: BrowseAdminView,
     meta: { needLogin: true },
   },
 ];

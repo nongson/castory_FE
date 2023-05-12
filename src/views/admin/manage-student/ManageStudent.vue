@@ -40,6 +40,7 @@
           :options="userDetailsOptions"
           @delete="handleShowDialogDeleteUser"
           @edit="handleShowDialogEditUser"
+          @navigate="handleNavigateStudentDetails"
         />
       </v-col>
     </v-row>
@@ -148,6 +149,7 @@ export default {
     ]),
   },
   methods: {
+    // handle Dialog
     handleShowDialogDeleteUser(user) {
       console.log(user);
       this.showDialogDelete = true;
@@ -183,6 +185,11 @@ export default {
       console.log(item.id);
       this.showDialogManageClasses = false;
       this.showDialogDelete = true;
+    },
+
+    // navigate to student details
+    handleNavigateStudentDetails(item) {
+      this.$router.push(`/student/${item.id}`);
     },
   },
 };
