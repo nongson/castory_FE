@@ -51,7 +51,7 @@
       </v-layout>
       <DialogComponent
         :showDialogValue="showDialog"
-        typeDialog="delete"
+        typeDialog="success"
         @closeDialog="handleCloseDialog"
         @confirmRequest="handleConfirmRequest"
       />

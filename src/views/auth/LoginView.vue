@@ -160,7 +160,8 @@ export default {
           password: this.password.value,
         });
       } catch (error) {
-        this.errorMessage = error;
+        let newMsg = error + "please enter username and password to login";
+        this.errorMessage = newMsg;
       }
       // logic login here
       this.token && (await this.$router.replace("/list"));

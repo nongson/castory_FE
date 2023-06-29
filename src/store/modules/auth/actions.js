@@ -2,7 +2,8 @@ import axios from "axios";
 
 export default {
   async handleLogin(context, payload) {
-    let mainURI = "http://103.107.183.127:81/api/login";
+    let mainURI =
+      "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBZkE7trQ2727WfSMSacjY4bRlXilz95jM";
     await axios
       .post(mainURI, {
         user_name: payload.username,
@@ -18,8 +19,7 @@ export default {
             token_type: res.data.token_type,
           });
         } else {
-          const error = res.data.message || "Something is wrong!";
-          throw error;
+          throw res.data.message || "Something is wrong!";
         }
       });
     //

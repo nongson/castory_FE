@@ -8,7 +8,7 @@
           size="64"
         ></v-progress-circular>
       </v-overlay>
-      <NavBarComponent v-if="getIsLoggedIn || this.$route.path === '/login'" />
+      <NavBarComponent />
       <router-view v-slot="{ Component, route }">
         <component :is="Component" :key="route.patch" />
       </router-view>
@@ -36,11 +36,7 @@ export default {
     this.$store.dispatch("auth/handleKeepLogin");
   },
   mounted() {
-    if (this.$vuetify.breakpoint.xsOnly) {
-      this.mobileScreen = true;
-    } else {
-      this.mobileScreen = false;
-    }
+    this.mobileScreen = this.$vuetify.breakpoint.xsOnly;
     localStorage.setItem("mobileScreen", this.mobileScreen);
   },
 };
