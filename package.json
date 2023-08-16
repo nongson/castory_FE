@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "deploy": "vue-cli-service build && git checkout -b gh-pages && cp -r dist/* . && git add . && git commit -m 'Deploy to GitHub Pages' && git push origin gh-pages",
+    "deploy": "vue-cli-service build && git checkout -b gh-pages-test && cp -r dist/* . && git add . && git commit -m 'Deploy to GitHub Pages' && git push origin gh-pages",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
